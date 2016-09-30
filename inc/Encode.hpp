@@ -1,12 +1,18 @@
-#include "Tree.hpp"
-#include <string>
-using namespace std;
-class Encode{
-  private:
+#pragma once
 
+#include "Globals.h"
 
-  public:
+class Encode {
+ public:
+         Encode(std::string input, std::std output = "");
+         bool loadMedia();
+         void countBytes();
 
-    Encode( string name );
+ private:
+         std::string m_iPath;
+         std::string m_oPath;
+         FILE* m_input;
+         FILE* m_output;
+         vector<ulong_64> occur;
 
 };
