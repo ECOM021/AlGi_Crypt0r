@@ -1,17 +1,18 @@
 #Todos os seus .c
-OBJS =
+OBJS	=	./src/main.cpp	\
+		./src/Encode.cpp
 
-#Todos os seus .h
-DEPS =
+DEPS 	=	./inc/Globals.hpp	\
+		./inc/Encode.hpp
 
 #Seu compilador
 CC = g++
 
 #Suas flags
-COMPILER_FLAGS = -w
+COMPILER_FLAGS = -w -std=c++0x
 
 #Nome do seu executavel
-OBJ_NAME =
+OBJ_NAME = ./build/Huffman
 
 #Todos os alvos marcados para a compilação
 all : $(OBJS)

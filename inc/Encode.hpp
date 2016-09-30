@@ -1,18 +1,19 @@
 #pragma once
 
-#include "Globals.h"
+#include "Globals.hpp"
 
 class Encode {
  public:
-         Encode(std::string input, std::std output = "");
+         Encode(string input, string output = "");
          bool loadMedia();
          void countBytes();
+         void printOccur();
 
  private:
-         std::string m_iPath;
-         std::string m_oPath;
-         FILE* m_input;
-         FILE* m_output;
+         string m_iPath;
+         string m_oPath;
+         fstream m_input;
+         fstream m_output;
          vector<ulong_64> occur;
 
 };

@@ -1,27 +1,31 @@
-#include <../inc/Encode.hpp>
+#include "../inc/Encode.hpp"
 
-Encode::Encode(std::string input, std::std output) {
+Encode::Encode(string input, string output) {
         m_iPath = input;
         m_oPath = output;
         occur.resize(256, 0);
 }
 
 bool Encode::loadMedia() {
-        if((m_input = fopen(m_iPath)) != NULL)
-                return false;
-        return true;
+        m_input.open(m_iPath, fstream::in | std::fstream::binary);
+        if(m_input.is_open())
+                return true;
+        return false;
 }
 
 void Encode::countBytes() {
-        short c;
-        unsigned short uc;
-        while((c = (uc = fgetc(m_input))) != EOF)
-                ++occur[uc];
+        char * in = new char[1024];
+
+        while(m_input.getline(in, 1024))
+                for (int i = 0; i < m_input.gcount() ; i++)
+                        ++occur[(uchar) in[i] ];
+
+        delete in;
 }
 
 void Encode::printOccur() {
-        std::cout << "ASCII\tOCCUR\n";
+        cout << "ASCII\tOCCUR\n";
         for(int i = 0; i < 256; ++i)
                 if(occur[i])
-                        std::cout << i << '\t' << occur[i] << '\n';
+                        cout << i << '\t' << occur[i] << '\n';
 }
