@@ -27,7 +27,7 @@ Node * Tree::getRoot() const {
 
 Node * buildTree( int & idx , vector<uchar> & represent ) {
 	if( represent[idx] == '*' ) {
-		return new Node( 0 , 0 , buildTree(idx++, represent), buildTree(idx++, represent) ); 
+		return new Node( 0 , 0 , buildTree(++idx, represent), buildTree(++idx, represent) ); 
 	} else {
 		if( represent[idx] == '!' )  ++idx;
 		return new Node( represent[idx] , 0 , NULL , NULL );
