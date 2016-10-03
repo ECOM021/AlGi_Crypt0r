@@ -62,7 +62,7 @@ void Encode::codingFile() {
         while(m_input.getline(in, 1024)) {
 		vector<bool> binary;
                 for (int i = 0; i < m_input.gcount() ; i++) {
-			binary.push_back( m_codes[ (uchar)in[i] ] );
+			binary.insert( binary.end() , m_codes[ (uchar)in[i] ].begin(), m_codes[ (uchar)in[i] ].end() );
 		}
 		while( binary.size() >= 8 ) {
 			
