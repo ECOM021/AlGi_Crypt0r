@@ -64,9 +64,6 @@ void Encode::codingFile() {
                 for (int i = 0; i < m_input.gcount() ; i++) {
 			binary.push_back( m_codes[ (uchar)in[i] ] );
 		}
-		while( binary.size() >= 8 ) {
-			
-		}
 	}
         delete []in;
 }
