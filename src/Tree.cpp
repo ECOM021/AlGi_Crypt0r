@@ -16,6 +16,20 @@ Tree::Tree ( vector<ulong_64> occur )
   m_root = pq.top(); pq.pop();
 }
 
+Tree::Tree ( vector<uchar> represent ) {
+	int idx = 0;
+	m_root = buildTree(idx, reprenset);
+}
+
 Node * Tree::getRoot() const {
         return m_root;
+}
+
+Node * buildTree( int & idx , vector<uchar> & represent ) {
+	if( represent[idx] == '*' ) {
+		return new Node( 0 , 0 , buildTree(idx++, represent), buildTree(idx++, represent) ); 
+	} else {
+		if( represent[idx] == '!' )  ++idx;
+		return new Node( represent[idx] , 0 , NULL , NULL );
+	}
 }

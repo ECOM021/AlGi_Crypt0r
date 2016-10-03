@@ -11,5 +11,6 @@ private:
 
 public:
   Tree ( vector<ulong_64> occur );
+  Tree ( vector<uchar> reprenset );
   Node * getRoot() const;
 };
