@@ -1,10 +1,15 @@
 #Todos os seus .c
 OBJS	=	./src/Encode.cpp	\
-		./src/main.cpp
-
+		./src/main.cpp		\
+		./src/Tree.cpp		\
+		./src/Node.cpp		\
+		./utils/Debug.cpp
 #Todos os seus .h
 DEPS	=	./inc/Encode.hpp	\
-		./inc/Globals.hpp
+		./inc/Globals.hpp	\
+		./inc/Tree.hpp		\
+		./inc/Node.hpp		\
+		./utils/Debug.hpp
 
 #Seu compilador
 CC = g++
