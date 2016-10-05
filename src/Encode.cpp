@@ -73,6 +73,8 @@ void Encode::codingFile() {
         vector<bool> binary;
         file << 0x00;
         file << 0x00;
+        file << 0x00;
+        file << "Nome";
         for (auto p : m_represent )
                 file << p;
         while(m_input.getline(in, 1024)) {
@@ -88,7 +90,6 @@ void Encode::codingFile() {
 		}
 	}
         uchar trash = 0;
-        cout << "TRASH " << binary.size() << endl;
         if( binary.size() ) {
                 trash = 8 - binary.size();
                 while ( binary.size() < 8 )
@@ -103,9 +104,8 @@ void Encode::codingFile() {
         string twobytes = "";
         twobytes += ((trash<<5)|(((int)m_represent.size())>>8));
         twobytes += (m_represent.size()&255);
+        // FALTA TAMANHO DO NOME
         file << twobytes;
-        //file << ((char)((trash&255)<<5)|((((int)m_represent.size())&255)>>8));
-        //file << (m_represent.size()&255);
         delete []in;
         file.close();
 }
