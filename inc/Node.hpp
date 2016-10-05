@@ -3,21 +3,21 @@ using namespace std;
 
 #include "Globals.hpp"
 
-class Node
-{
-  uchar symb;
-  int occur;
-  Node *left;
-  Node *right;
+class Node {
 
-public:
+ public:
+         Node();
+         Node( uchar symb , int occur , Node *left , Node *right );
+         uchar getSymb();
+         int getOccur();
+         Node * getLeft();
+         Node * getRight();
+         bool isLeaf();
+         bool operator > (Node &other);
 
-  Node();
-  Node( uchar symb , int occur , Node *left , Node *right );
-  uchar getSymb();
-  int getOccur();
-  Node * getLeft();
-  Node * getRight();
-  bool isLeaf();
-  bool operator < (Node &other);
+ private:
+         uchar symb;
+         int occur;
+         Node *left;
+         Node *right;
 };

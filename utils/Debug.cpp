@@ -8,7 +8,7 @@ void Debug::printOccur(vector<ulong_64> occur) {
 }
 
 void Debug::printRepresentation(vector<uchar> rep) {
-        cout << "Representation:\n";
+        cout << "Representation:\t" << rep.size() << endl;
         for( auto p : rep )
                 cout << p;
         cout << endl;

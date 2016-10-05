@@ -18,6 +18,7 @@ class Encode {
          vector<uchar> getRepresentation() const;
 
  private:
+         int flag;
          string m_iPath;
          string m_oPath;
          fstream m_input;

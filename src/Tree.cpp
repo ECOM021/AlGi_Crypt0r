@@ -2,13 +2,16 @@
 using namespace std;
 Tree::Tree ( vector<ulong_64> occur )
 {
-  priority_queue<Node*> pq;
+  priority_queue<Node*, vector<Node*> , less<Node*> >pq;
   for (int i = 0; i < ASCII_SIZE; i++) {
     if( occur[i] ){
       pq.push( new Node( i , occur[i], NULL , NULL  ) );
     }
   }
+  cout << pq.size() << endl;
+  int j = 1;
   while( pq.size() > 1 ) {
+          cout << j++ <<endl;
     Node * lC = pq.top(); pq.pop();
     Node * rC = pq.top(); pq.pop();
     pq.push( new Node( '*' , lC->getOccur() + rC->getOccur() , lC, rC ) );
