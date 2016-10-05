@@ -12,6 +12,7 @@ class Encode {
          void buildRepresent( Node * subtree );
          void buildCodes( Node * subtree , vector<bool> coding );
 	 void codingFile();
+         void write();
 
          vector<ulong_64> getOccur() const;
          unordered_map< uchar, vector<bool> > getCodes() const;

@@ -1,8 +1,16 @@
 #include "../inc/Tree.hpp"
 using namespace std;
+
+struct NodeCmp
+{
+    bool operator()( Node* lhs,  Node* rhs) const {
+            return lhs->getOccur() > rhs->getOccur();
+    }
+};
+
 Tree::Tree ( vector<ulong_64> occur )
 {
-  priority_queue<Node*, vector<Node*> , less<Node*> >pq;
+  priority_queue<Node*, vector<Node *> ,NodeCmp >pq;
   for (int i = 0; i < ASCII_SIZE; i++) {
     if( occur[i] ){
       pq.push( new Node( i , occur[i], NULL , NULL  ) );
