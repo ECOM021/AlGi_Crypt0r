@@ -1,7 +1,7 @@
 #include "../inc/Encode.hpp"
 
 Encode::Encode(string input, string output) {
-        flag = 1;
+
         m_iPath = input;
 
         if(output == "")
@@ -9,7 +9,7 @@ Encode::Encode(string input, string output) {
         else
                 m_oPath = output;
 
-        occur.resize(256, 0);
+        occur.resize(ASCII_SIZE, 0);
         if( !loadMedia() )
                 return;
         countBytes();
@@ -29,9 +29,9 @@ bool Encode::loadMedia() {
 }
 
 void Encode::countBytes() {
-        char * in = new char[1024];
+        char * in = new char[READMAX];
 
-        while(m_input.getline(in, 1024))
+        while(m_input.readsome(in, READMAX))
                 for (int i = 0; i < m_input.gcount() ; i++)
                         ++occur[(uchar) in[i] ];
 
@@ -39,7 +39,7 @@ void Encode::countBytes() {
 }
 
 void Encode::buildRepresent( Node * subtree ) {
-        cout << "Flag " << flag++ << endl;
+
         if( subtree->isLeaf() ) {
                 if( subtree->getSymb() == '*'
                         || subtree->getSymb() == '!' )
@@ -68,25 +68,27 @@ void Encode::buildCodes(Node *subtree, vector<bool> coding) {
 }
 
 void Encode::codingFile() {
-        char * in = new char[1024];
+        char * in = new char[READMAX];
         ofstream file(m_oPath);
-        vector<bool> binary;
+        list<bool> binary;
         file << 0x00;
         file << 0x00;
         file << 0x00;
         file << "Nome";
         for (auto p : m_represent )
                 file << p;
-        while(m_input.getline(in, 1024)) {
+        while(m_input.readsome(in, READMAX)) {
                 for (int i = 0; i < m_input.gcount() ; i++) {
-			binary.insert( binary.end() , m_codes[ (uchar)in[i] ].begin(), m_codes[ (uchar)in[i] ].end() );
+			for( auto bin : m_codes[ (uchar)in[i] ] )
+                                binary.push_back(bin);
 		}
 		while( binary.size() >= 8 ) {
                         uchar value = 0;
-                        for( int i = 0 ; i < 8 ; ++i )
-                                value = (value<<1) | binary[i];
+                        for( int i = 0 ; i < 8 ; ++i ) {
+                                value = (value<<1) | binary.front();
+                                binary.pop_front();
+                        }
                         file << value;
-                        binary.erase( binary.begin() , binary.begin()+8 );
 		}
 	}
         uchar trash = 0;
@@ -95,10 +97,11 @@ void Encode::codingFile() {
                 while ( binary.size() < 8 )
                         binary.push_back(false);
                 uchar value = 0;
-                for( int i = 0 ; i < 8 ; ++i )
-                        value = (value<<1) | binary[i];
+                for( int i = 0 ; i < 8 ; ++i ) {
+                        value = (value<<1) | binary.front();
+                        binary.pop_front();
+                }
                 file << value;
-                binary.erase( binary.begin() , binary.begin()+8 );
         }
         file.seekp(0);
         string twobytes = "";
