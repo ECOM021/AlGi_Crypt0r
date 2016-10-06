@@ -2,6 +2,7 @@
 
 #include "../inc/Globals.hpp"
 #include "../inc/Encode.hpp"
+#include "../inc/Decode.hpp"
 
 class Debug {
  public:

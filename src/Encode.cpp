@@ -110,10 +110,6 @@ void Encode::codingFile() {
         file.close();
 }
 
-void Encode::write() {
-
-}
-
 vector<ulong_64> Encode::getOccur() const {
         return occur;
 }

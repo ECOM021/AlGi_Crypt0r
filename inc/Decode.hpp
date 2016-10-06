@@ -6,7 +6,9 @@ using namespace std;
 
 class Decode {
  public:
-         Decode(string input, string output);
+         Decode(string input, string output = "");
+         bool loadMedia();
+         void getHeader();
  private:
          string m_iPath;
          string m_oPath;

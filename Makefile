@@ -3,12 +3,14 @@ OBJS	=	./src/Encode.cpp	\
 		./src/main.cpp		\
 		./src/Tree.cpp		\
 		./src/Node.cpp		\
+		./src/Decode.cpp		\
 		./utils/Debug.cpp
 #Todos os seus .h
 DEPS	=	./inc/Encode.hpp	\
 		./inc/Globals.hpp	\
 		./inc/Tree.hpp		\
 		./inc/Node.hpp		\
+		./inc/Decode.hpp		\
 		./utils/Debug.hpp
 
 #Seu compilador
