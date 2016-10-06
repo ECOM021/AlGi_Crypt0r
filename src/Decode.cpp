@@ -49,9 +49,22 @@ void Decode::getHeader() {
               binary.push_back( in[i]&(1<<(7-j)) );
             }
           }
-          // DECODIFICAR
+          /* ERRO AQUI
+          Node * find = m_tree->getRoot();
+          while ( binary.size() >= m_tree->getHeigth() + trash ) {
+            if( binary.front() )
+              find = find->getRight();
+            else
+              find = find->getLeft();
+            if( find->isLeaf() ) {
+              file << find->getSymb();
+              find = m_tree->getRoot();
+            }
+            binary.pop_front();
+          } */
         }
         cout << endl;
+        file.close();
         delete []in;
 }
 
