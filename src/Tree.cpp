@@ -27,18 +27,24 @@ Tree::Tree ( vector<ulong_64> occur )
   m_root = pq.top(); pq.pop();
 }
 
-Node * buildTree( int & idx, vector<uchar> reprenset ) {
+Node * Tree::buildTree( int & idx, vector<uchar> reprenset , int height ) {
 	if( reprenset[idx] == '*' ) {
-		return new Node( 0 , 0 , buildTree(++idx, reprenset), buildTree(++idx,reprenset));
+		return new Node( 0 , 0 , buildTree(++idx, reprenset, height+1),
+                              buildTree(++idx,reprenset, height+1) );
 	} else {
+    m_height = max(m_height, height+1);
 		if( reprenset[idx] == '!' )  ++idx;
 		return new Node( reprenset[idx] , 0 , NULL , NULL );
 	}
 }
 
 Tree::Tree ( std::vector<uchar> represent ) {
-	int idx = 0;
-        m_root = buildTree(idx,represent);
+	int idx = m_height = 0;
+  m_root = buildTree(idx , represent , 0);
+}
+
+int Tree::getHeigth() {
+  return m_height;
 }
 
 Node * Tree::getRoot() {

@@ -21,7 +21,7 @@ bool Decode::loadMedia() {
 }
 
 void Decode::getHeader() {
-        char * in = new char[1024];
+        char * in = new char[READMAX];
         unsigned int trash, sizeTree, sizeName;
         m_input.readsome(in, 3);
         trash = (in[0]&255)>>5;
@@ -30,6 +30,7 @@ void Decode::getHeader() {
         sizeName = in[2];
         cout << "Lixo: " << trash <<"\t\tÁrvore: " << sizeTree << "\t\tsizeName: " << sizeName << endl;
         string name;
+        // MUDAR AQUI O TAMANHO
         m_input.readsome(in, 4);
         for (int i = 0; i < 4 ; i++) {
           name += (char)(in[i]&255);
@@ -39,16 +40,16 @@ void Decode::getHeader() {
           m_represent.push_back( in[i] );
         }
         cout << "Name " << name << "\t" << name.size() << "\t\t" << "Representação " << m_represent.size() << endl;
-        vector<bool> binary;
+        list<bool> binary;
         ofstream file(m_oPath);
         cout << "Terminando o arquivo" << endl;
-        while( m_input.readsome(in, 1024) ){
-          cout << "LEU" << endl;
+        while( m_input.readsome(in, READMAX) ) {
           for( int i = 0 ; i < m_input.gcount() ; ++i  ) {
             for( int j = 0 ; j < 8 ; ++j ) {
               binary.push_back( in[i]&(1<<(7-j)) );
             }
           }
+          // DECODIFICAR
         }
         cout << endl;
         delete []in;

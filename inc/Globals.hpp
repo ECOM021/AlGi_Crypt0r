@@ -8,6 +8,7 @@ using namespace std;
 #include <fstream>
 #include <unordered_map>
 #include <list>
+#include <algorithm>
 #define ASCII_SIZE 256
 #define READMAX 1<<15
 
