@@ -9,6 +9,7 @@ class Decode {
          Decode(string input, string output = "");
          bool loadMedia();
          void getHeader();
+         vector<uchar> getRepresentation() const;
  private:
          string m_iPath;
          string m_oPath;
