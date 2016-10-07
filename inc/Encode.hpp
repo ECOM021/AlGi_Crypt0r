@@ -11,11 +11,11 @@ class Encode {
          void countBytes();
          void buildRepresent( Node * subtree );
          void buildCodes( Node * subtree , vector<bool> coding );
-	void codingFile();
-
+         void codingFile();
          vector<ulong_64> getOccur() const;
          unordered_map< uchar, vector<bool> > getCodes() const;
          vector<uchar> getRepresentation() const;
+         string SplitFilename (string str);
 
  private:
          string m_iPath;

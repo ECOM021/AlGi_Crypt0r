@@ -74,7 +74,8 @@ void Encode::codingFile() {
         file << 0x00;
         file << 0x00;
         file << 0x00;
-        file << "Nome";
+        short nameSize = SplitFilename(m_iPath).size();
+        file << SplitFilename(m_iPath);
         for (auto p : m_represent )
                 file << p;
         while(m_input.readsome(in, READMAX)) {
@@ -107,10 +108,15 @@ void Encode::codingFile() {
         string twobytes = "";
         twobytes += ((trash<<5)|(((int)m_represent.size())>>8));
         twobytes += (m_represent.size()&255);
-        // FALTA TAMANHO DO NOME
         file << twobytes;
+        file << nameSize;
         delete []in;
         file.close();
+}
+
+string Encode::SplitFilename (string str) {
+        size_t found = str.find_last_of("/\\");
+        return str.substr(found+1);
 }
 
 vector<ulong_64> Encode::getOccur() const {

@@ -1,15 +1,17 @@
 #include "../inc/Decode.hpp"
 
 Decode::Decode(string input, string output) {
-  m_iPath = input;
+        m_iPath = input;
 
-  if(output == "")
-    m_oPath = input + ".huff";
-  else
-    m_oPath = output;
-  if( !loadMedia() )
-    return;
-  getHeader();
+        if(output == "")
+                m_oPath = input;
+        else
+                m_oPath = output;
+        for(int i = 0; i < 5; ++i)
+                m_oPath.pop_back();
+        if( !loadMedia() )
+                return;
+        getHeader();
 }
 
 bool Decode::loadMedia() {

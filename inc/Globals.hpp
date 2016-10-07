@@ -1,4 +1,6 @@
-#pragma once
+#ifndef GLOBALS_HPP
+#define GLOBALS_HPP
+
 using namespace std;
 
 #include <iostream>
@@ -8,6 +10,7 @@ using namespace std;
 #include <fstream>
 #include <unordered_map>
 #include <list>
+#include <cstddef>
 
 #define ASCII_SIZE 256
 #define READMAX 1<<10
@@ -32,3 +35,5 @@ typedef unsigned char uchar;
 #define sentinel(M, ...)  { log_err(M, ##__VA_ARGS__); errno=0; goto error; }
 #define check_mem(A) check((A), "Out of memory.")
 #define check_debug(A, M, ...) if(!(A)) { debug(M, ##__VA_ARGS__); errno=0; goto error; }
+
+#endif /* end of include guard: GLOBALS_HPP */
