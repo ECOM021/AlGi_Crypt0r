@@ -10,7 +10,6 @@ Decode::Decode(string input, string output) {
   if( !loadMedia() )
     return;
   getHeader();
-  m_tree = new Tree(m_represent);
 }
 
 bool Decode::loadMedia() {
@@ -41,7 +40,11 @@ void Decode::getHeader() {
         }
         cout << "Name " << name << "\t" << name.size() << "\t\t" << "Representação " << m_represent.size() << endl;
         list<bool> binary;
+        cout << endl << "AQUI" << endl;
         ofstream file(m_oPath);
+        m_tree = new Tree(m_represent);
+        cout << endl << "AQUI" << endl;
+        Node * fd = m_tree->getRoot();
         cout << "Terminando o arquivo" << endl;
         while( m_input.readsome(in, READMAX) ) {
           for( int i = 0 ; i < m_input.gcount() ; ++i  ) {
@@ -49,19 +52,32 @@ void Decode::getHeader() {
               binary.push_back( in[i]&(1<<(7-j)) );
             }
           }
-          /* ERRO AQUI
-          Node * find = m_tree->getRoot();
+          cout << "LENDO " << m_input.gcount() << "\t\t Binary " << binary.size() << endl;
           while ( binary.size() >= m_tree->getHeigth() + trash ) {
             if( binary.front() )
-              find = find->getRight();
+              fd = fd->getRight();
             else
-              find = find->getLeft();
-            if( find->isLeaf() ) {
-              file << find->getSymb();
-              find = m_tree->getRoot();
+              fd = fd->getLeft();
+            if( fd->isLeaf() ) {
+              file << fd->getSymb();
+              fd = m_tree->getRoot();
             }
             binary.pop_front();
-          } */
+          }
+        }
+        for( int i = 0 ; i < trash ; ++i )
+          binary.pop_back();
+        while ( binary.size() )
+        {
+            if( binary.front() )
+              fd = fd->getRight();
+            else
+              fd = fd->getLeft();
+            if( fd->isLeaf() ) {
+              file << fd->getSymb();
+              fd = m_tree->getRoot();
+            }
+            binary.pop_front();
         }
         cout << endl;
         file.close();

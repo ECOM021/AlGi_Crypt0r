@@ -50,3 +50,14 @@ int Tree::getHeigth() {
 Node * Tree::getRoot() {
         return m_root;
 }
+
+void Tree::print(Node * no) {
+  if( no->isLeaf() ) {
+    if( no->getSymb() == '!' || no->getSymb() == '*' ) cout << "!";
+    cout << no->getSymb();
+  } else {
+    cout << "*";
+    print(no->getLeft());
+    print(no->getRight());
+  }
+}

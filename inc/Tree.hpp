@@ -16,4 +16,5 @@ public:
   Tree ( vector<uchar> reprenset );
   Node * getRoot();
   int getHeigth();
+  void print(Node * no);
 };
