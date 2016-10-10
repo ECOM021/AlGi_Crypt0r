@@ -1,17 +1,17 @@
 #Todos os seus .c
-OBJS	=	./src/Encode.cpp	\
-		./src/main.cpp		\
-		./src/Tree.cpp		\
-		./src/Node.cpp		\
-		./src/Decode.cpp		\
-		./utils/Debug.cpp
-#Todos os seus .h
-DEPS	=	./inc/Encode.hpp	\
-		./inc/Globals.hpp	\
-		./inc/Tree.hpp		\
-		./inc/Node.hpp		\
-		./inc/Decode.hpp		\
-		./utils/Debug.hpp
+OBJS	=	./libhuffman/src/Encode.cpp		\
+		./libhuffman/src/main.cpp		\
+		./libhuffman/src/Tree.cpp		\
+		./libhuffman/src/Node.cpp		\
+		./libhuffman/src/Decode.cpp		\
+		./libhuffman/utils/Debug.cpp
+#Todos os seus .h	
+DEPS	=	./libhuffman/inc/Encode.hpp		\
+		./libhuffman/inc/Globals.hpp		\
+		./libhuffman/inc/Tree.hpp		\
+		./libhuffman/inc/Node.hpp		\
+		./libhuffman/inc/Decode.hpp		\
+		./libhuffman/utils/Debug.hpp
 
 #Seu compilador
 CC = g++

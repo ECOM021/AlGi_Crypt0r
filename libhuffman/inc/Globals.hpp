@@ -13,7 +13,7 @@ using namespace std;
 #include <cstddef>
 
 #define ASCII_SIZE 256
-#define READMAX 1<<10
+#define READMAX 1<<15
 
 typedef unsigned long long ulong_64;
 typedef unsigned char uchar;
