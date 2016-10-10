@@ -3,15 +3,16 @@
 Encode::Encode(string input, string output) {
 
         m_iPath = input;
-
+        cout << "Name ---- " << endl;
         if(output == "")
                 m_oPath = input + ".huff";
         else
                 m_oPath = output;
 
         occur.resize(ASCII_SIZE, 0);
-        if( !loadMedia() )
+        if( !loadMedia() ){
                 return;
+        }
         countBytes();
         m_tree = new Tree( occur );
         buildRepresent(m_tree->getRoot());
@@ -74,7 +75,7 @@ void Encode::codingFile() {
         file << 0x00;
         file << 0x00;
         file << 0x00;
-        short nameSize = SplitFilename(m_iPath).size();
+        uchar nameSize = SplitFilename(m_iPath).size();
         file << SplitFilename(m_iPath);
         for (auto p : m_represent )
                 file << p;
