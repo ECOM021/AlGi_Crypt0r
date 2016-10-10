@@ -9,9 +9,11 @@ class Decode {
          Decode(string input, string output = "");
          bool loadMedia();
          void getHeader();
+         void decodeFile();
          vector<uchar> getRepresentation() const;
  private:
          string m_iPath;
+         int m_trash;
          string m_oPath;
          fstream m_input;
          fstream m_output;
