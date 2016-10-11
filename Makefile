@@ -4,14 +4,17 @@ OBJS	=	./libhuffman/src/Encode.cpp		\
 		./libhuffman/src/Tree.cpp		\
 		./libhuffman/src/Node.cpp		\
 		./libhuffman/src/Decode.cpp		\
-		./libhuffman/utils/Debug.cpp
-#Todos os seus .h	
+		./libhuffman/utils/Debug.cpp	\
+		./librsa/src/Math.cpp
+
+#Todos os seus .h
 DEPS	=	./libhuffman/inc/Encode.hpp		\
 		./libhuffman/inc/Globals.hpp		\
 		./libhuffman/inc/Tree.hpp		\
 		./libhuffman/inc/Node.hpp		\
 		./libhuffman/inc/Decode.hpp		\
-		./libhuffman/utils/Debug.hpp
+		./libhuffman/utils/Debug.hpp	\
+		./librsa/inc/Math.hpp
 
 #Seu compilador
 CC = g++
