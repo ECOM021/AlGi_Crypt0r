@@ -1,16 +1,13 @@
 #pragma once
 using namespace std;
-
-#include <vector>
-#include <bitset>
-
+#include "../../libhuffman/inc/Globals.hpp"
+#include "Math2.hpp"
 class Sieve {
 public:
         Sieve();
-        bool isPrime(unsigned long long int);
-        unsigned long long int getPos() const;
+        bool isPrime(unsigned long long int idx);
+        unsigned long long int getPos(unsigned long long int idx) const;
         unsigned long long int getSize() const;
 private:
-        bitset<(unsigned long long int)(10e10+10)> m_table;
         vector<unsigned long long int> m_primes;
 };

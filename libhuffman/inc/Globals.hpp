@@ -11,6 +11,7 @@ using namespace std;
 #include <unordered_map>
 #include <list>
 #include <cstddef>
+#include <bitset>
 
 #define ASCII_SIZE 256
 #define READMAX 1<<15
