@@ -1,7 +1,6 @@
 #pragma once
 using namespace std;
 
-#include "Sieve.hpp"
 #include <fstream>
 #include "Math2.hpp"
 

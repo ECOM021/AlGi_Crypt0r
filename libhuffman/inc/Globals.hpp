@@ -12,7 +12,7 @@ using namespace std;
 #include <list>
 #include <cstddef>
 #include <bitset>
-
+#include <set>
 #define ASCII_SIZE 256
 #define READMAX 1<<15
 

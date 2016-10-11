@@ -22,17 +22,21 @@ ulong_64 Math2::gcd( ulong_64 a, ulong_64 b ) {
 	return gcd( b, a%b );
 }
 ulong_64 Math2::sqrt(ulong_64 v) {
-  ulong_64 lower = 0;
-  ulong_64 mid;
-  ulong_64 upper = v;
-  while( lower < upper ) {
-    mid = (lower+upper)>>1;
-    if( mid*mid == v )
-      return mid;
-    else {
-      if( mid*mid > v ) upper = mid-1;
-      else lower = mid+1;
+    if (v == 0 || v == 1)
+       return v;
+    ulong_64 start = 1, end = v, ans;
+    while (start <= end)
+    {
+        ulong_64 mid = (start + end)>>1;
+        if (mid*mid == v)
+            return mid;
+        if (mid*mid < v)
+        {
+            start = mid + 1;
+            ans = mid;
+        }
+        else
+            end = mid - 1;
     }
-  }
-  return mid;
+    return ans;
 }

@@ -6,7 +6,7 @@ OBJS	=	./libhuffman/src/Encode.cpp		\
 		./libhuffman/src/Decode.cpp		\
 		./libhuffman/utils/Debug.cpp	\
 		./librsa/src/Math2.cpp		\
-		./librsa/src/Sieve.cpp		\
+		./librsa/src/PrimeSet.cpp		\
 		./librsa/src/Encrypt.cpp		\
 		./librsa/src/Decrypt.cpp
 
@@ -18,7 +18,7 @@ DEPS	=	./libhuffman/inc/Encode.hpp		\
 		./libhuffman/inc/Decode.hpp		\
 		./libhuffman/utils/Debug.hpp	\
 		./librsa/inc/Math2.hpp				\
-		./librsa/inc/Sieve.hpp			\
+		./librsa/inc/PrimeSet.hpp			\
 		./librsa/inc/Decrypt.hpp		\
 		./librsa/inc/Encrypt.hpp
 
