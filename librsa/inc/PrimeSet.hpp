@@ -1,5 +1,6 @@
-#pragma once
-using namespace std;
+#ifndef PRIMESET_HPP
+#define PRIMESET_HPP
+
 #include "../../libhuffman/inc/Globals.hpp"
 #include "Math2.hpp"
 class PrimeSet {
@@ -11,3 +12,5 @@ public:
 private:
         set<unsigned long long int> m_primes;
 };
+
+#endif // !PRIMESET_HPP

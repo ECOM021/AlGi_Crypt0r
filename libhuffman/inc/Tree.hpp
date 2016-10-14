@@ -1,4 +1,6 @@
-#pragma once
+#ifndef TREE_HPP
+#define TREE_HPP
+
 using namespace std;
 
 #include"Globals.hpp"
@@ -18,3 +20,5 @@ public:
   int getHeigth();
   void print(Node * no);
 };
+
+#endif // !TREE_HPP

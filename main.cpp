@@ -2,21 +2,11 @@
 #include "./libhuffman/inc/Encode.hpp"
 #include "./librsa/inc/Decrypt.hpp"
 #include "./librsa/inc/Encrypt.hpp"
-#include "./librsa/inc/Math2.hpp"
-#include "./librsa/inc/PrimeSet.hpp"
+#include "./View/inc/Window.hpp"
 using namespace std;
 
-int main(int argc, char const *argv[]) {
-  //PrimeSet primes = PrimeSet();
-  cout << Math2::sqrt(16) << endl;
-  cout << Math2::sqrt(17) << endl;
-  cout << Math2::sqrt(18) << endl;
-  cout << Math2::sqrt(19) << endl;
-  cout << Math2::sqrt(20) << endl;
-  cout << Math2::sqrt(21) << endl;
-  cout << Math2::sqrt(22) << endl;
-  cout << Math2::sqrt(23) << endl;
-  cout << Math2::sqrt(24) << endl;
-  cout << Math2::sqrt(25) << endl;
-  return 0;
+int main(int argc, char *argv[]) {
+        auto app = Gtk::Application::create(argc, argv, "AlGi_Crypt0r");
+        Window window;
+        return app->run(window);
 }

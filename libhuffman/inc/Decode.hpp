@@ -1,8 +1,9 @@
-#pragma once
+#ifndef DECODE_HPP
+#define DECODE_HPP
+
 using namespace std;
 #include "Globals.hpp"
 #include "Tree.hpp"
-
 
 class Decode {
  public:
@@ -20,3 +21,5 @@ class Decode {
          Tree * m_tree;
          vector<uchar> m_represent;
 };
+
+#endif // !DECODE_HPP

@@ -1,4 +1,6 @@
-#pragma once
+#ifndef ENCODE_HPP
+#define ENCODE_HPP
+
 using namespace std;
 
 #include "Globals.hpp"
@@ -27,3 +29,5 @@ class Encode {
          unordered_map< uchar , vector<bool> > m_codes;
          vector<uchar> m_represent;
 };
+
+#endif // !ENCODE_HPP

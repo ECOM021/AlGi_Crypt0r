@@ -1,4 +1,6 @@
-#pragma once
+#ifndef ENCRYPT_HPP
+#define ENCRYPT_HPP
+
 using namespace std;
 
 #include <fstream>
@@ -22,3 +24,5 @@ private:
         unsigned long long int m_e;
         unsigned long long int m_d;
 };
+
+#endif // !ENCRYPT_HPP

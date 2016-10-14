@@ -1,4 +1,5 @@
-#pragma once
+#ifndef DEBUG_HPP
+#define DEBUG_HPP
 
 #include "../inc/Globals.hpp"
 #include "../inc/Encode.hpp"
@@ -10,3 +11,5 @@ class Debug {
          static void printRepresentation(vector<uchar> rep);
          static void printCodes(unordered_map<uchar, vector<bool> > codes);
 };
+
+#endif //DEBUG_HPP

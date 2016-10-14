@@ -1,10 +1,11 @@
-#pragma once
+#ifndef NODE_HPP
+#define NODE_HPP
+
 using namespace std;
 
 #include "Globals.hpp"
 
 class Node {
-
  public:
          Node();
          Node( uchar symb , int occur , Node *left , Node *right );
@@ -21,3 +22,5 @@ class Node {
          Node *left;
          Node *right;
 };
+
+#endif // !NODE_HPP
