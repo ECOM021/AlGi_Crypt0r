@@ -4,11 +4,14 @@
 using namespace std;
 
 Window::Window()
-: m_ButtonBox(Gtk::ORIENTATION_VERTICAL),
+: m_ButtonBox(Gtk::ORIENTATION_HORIZONTAL),
   m_Button_File("Choose File"),
   m_Button_Folder("Choose Folder")
 {
-  set_title("Gtk::FileSelection example");
+  set_default_size(360, 480);
+  set_title("AlGi_crypt0r");
+  set_position(Gtk::WIN_POS_CENTER);
+  set_border_width(10);
 
   add(m_ButtonBox);
 
