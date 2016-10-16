@@ -1,10 +1,10 @@
 #ifndef WINDOW_HPP
 #define WINDOW_HPP
 
-#include "../../libhuffman/inc/Decode.hpp"
-#include "../../libhuffman/inc/Encode.hpp"
-#include "../../librsa/inc/Decrypt.hpp"
-#include "../../librsa/inc/Encrypt.hpp"
+#include "../../Model/libs/libhuffman/inc/Decode.hpp"
+#include "../../Model/libs/libhuffman/inc/Encode.hpp"
+#include "../../Model/libs/librsa/inc/Decrypt.hpp"
+#include "../../Model/libs/librsa/inc/Encrypt.hpp"
 
 #include <gtkmm.h>
 #include <string>

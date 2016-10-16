@@ -1,4 +1,4 @@
-#include "./View/inc/Window.hpp"
+#include "../../View/inc/Window.hpp"
 
 using namespace std;
 
