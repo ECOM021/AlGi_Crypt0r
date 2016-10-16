@@ -5,8 +5,8 @@ PrimeSet::PrimeSet() {
   input.open("../AlGi_Crypt0r/assets/primes.txt", fstream::in);
   ulong_64 v = 0;
   char c;
-  m_primes = new vector<unsigned long long int>(10000000);
-  set<unsigned long long int> primes = new set<unsigned long long int> primes();
+  m_primes = new vector<ulong_64>(10000000);
+  set<ulong_64> *primes = new set<ulong_64>();
   while (input.get(c)) {
     if( c < '0' || c > '9' ) {
       primes->insert(v);
@@ -17,14 +17,14 @@ PrimeSet::PrimeSet() {
   }
   primes->insert(v);
   primes->erase(0);
-  for( auto p : primes )
+  for( auto p : *primes )
       m_primes->push_back(p);
   sort( m_primes->begin() , m_primes->end()  );
   delete primes;
 }
-unsigned long long int PrimeSet::getSize() const {
+ulong_64 PrimeSet::getSize() const {
   return m_primes->size();
 }
-unsigned long long int PrimeSet::getNthPrime( ulong_64 idx ) const {
-  return m_primes[idx];
+ulong_64 PrimeSet::getNthPrime( ulong_64 idx ) const {
+  return m_primes->at(idx);
 }

@@ -4,13 +4,16 @@
 #include "../../libhuffman/inc/Globals.hpp"
 #include "Math2.hpp"
 #include <algorithm>
+
+typedef ulong_64 ulong_64;
+
 class PrimeSet {
 public:
         PrimeSet();
-        unsigned long long int getNthPrime( ulong_64 idx ) const;
-        unsigned long long int getSize() const;
+        ulong_64 getNthPrime( ulong_64 idx ) const;
+        ulong_64 getSize() const;
 private:
-        vector<unsigned long long int> * m_primes;
+        vector<ulong_64> * m_primes;
 };
 
 #endif // !PRIMESET_HPP
