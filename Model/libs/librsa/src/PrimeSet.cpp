@@ -12,7 +12,7 @@ PrimeSet::PrimeSet() {
       v = 0;
       continue;
     }
-    v = v*10 + (c-'0');
+    else v = v*10 + (c-'0');
   }
   primes.insert(v);
   primes.erase(0);
