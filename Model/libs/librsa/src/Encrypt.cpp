@@ -19,8 +19,8 @@ Encrypt::Encrypt(string input, string output = "") {
   std::cout << "2" << std::endl;
   srand (time(NULL));
   std::cout << "Set size: " << m_primes.getSize() << std::endl;
-//   std::cout << "3" << std::endl;
-//   choosePair();
+   std::cout << "3" << std::endl;
+   choosePair();
 //   std::cout << "4" << std::endl;
 //   totiente();
 //   std::cout << "5" << std::endl;
@@ -42,10 +42,13 @@ void Encrypt::totiente() {
 }
 void Encrypt::choosePair() {
 	ulong_64 size = m_primes.getSize();
+	cout << size << " ----- choosePair" << endl; 
 	do {
  		m_p = m_primes.getNthPrime( rand()%size );
   		m_q = m_primes.getNthPrime( rand()%size );
   		m_ring = m_p * m_q;
+  		cout << "Primes " << m_p << "\t\t" << m_q << endl;
+  		return; 
                 cout << m_ring << endl;
   	} while( m_ring <= 256 );
 }
