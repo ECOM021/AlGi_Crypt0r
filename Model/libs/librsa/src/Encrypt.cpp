@@ -30,6 +30,7 @@ Encrypt::Encrypt(string input, string output = "") {
   std::cout << "Exps: " << m_e << "\t" << m_d << "\n"; 
 }
 
+
 void Encrypt::pickOdd() {
 	m_e = 3;
 	while( Math2::gcd(m_e,m_multply) != 1 )
