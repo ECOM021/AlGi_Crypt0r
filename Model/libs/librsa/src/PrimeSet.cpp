@@ -17,8 +17,8 @@ PrimeSet::PrimeSet() {
   }
   primes->insert(v);
   primes->erase(0);
-  for( auto p : *primes )
-      m_primes->push_back(p);
+  for( auto p : primes )
+      m_primes->push_back(*p);
   sort( m_primes->begin() , m_primes->end()  );
   std::cout << "Vector size: " << m_primes->size() << std::endl;
   delete primes;
