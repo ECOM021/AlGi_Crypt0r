@@ -20,6 +20,8 @@ Encrypt::Encrypt(string input, string output = "") {
   totiente();
   loadMedia(input);
   encrypt();
+  std::cout << "Keys: " << m_p << "\t" << m_q << "\n";
+  std::cout << "Exps: " << m_e << "\t" << m_d << "\n"; 
 }
 
 void Encrypt::pickOdd() {
