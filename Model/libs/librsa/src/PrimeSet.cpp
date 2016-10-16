@@ -2,7 +2,7 @@
 
 PrimeSet::PrimeSet() {
   fstream input;
-  input.open("../AlGi_Crypt0r/assets/primes.txt", fstream::in);
+  input.open("../../../../Assets/primes.txt", fstream::in);
   ulong_64 v = 0;
   char c;
   m_primes = new vector<ulong_64>(10000000);
@@ -16,6 +16,7 @@ PrimeSet::PrimeSet() {
     else v = v*10 + (c-'0');
   }
   primes->insert(v);
+  cout << "Tamanho do set" << primes->size() << endl;
   primes->erase(0);
   int idx = 0;
   cout << "Tamanho do set " << primes->size() << endl;
