@@ -19,7 +19,6 @@ Encrypt::Encrypt(string input, string output = "") {
   choosePair();
   totiente();
   loadMedia(input);
-  // Setar a saída
   encrypt();
 }
 
@@ -36,6 +35,7 @@ void Encrypt::choosePair() {
  	m_p = m_primes.getNthPrime( rand()%MAX_IDX );
   	m_q = m_primes.getNthPrime( rand()%MAX_IDX );
   	m_ring = m_p * m_q;
+  	if( m_ring <= 256 ) choosePair();
 }
 bool Encrypt::loadMedia(string iPath) {
 	m_in.open(iPath, fstream::in | std::fstream::binary);
@@ -48,7 +48,7 @@ void Encrypt::encrypt() {
         ofstream file(m_path_output);
         while(m_in.readsome(in, READMAX))
                 for (int i = 0; i < m_in.gcount() ; i++)
-                	file << Math2::exp(in[i],m_e,m_ring) << '#';
+                	file << Math2::exp((uchar)in[i],m_e,m_ring) << '#';
         file.close();
         delete []in;
 }
