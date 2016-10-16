@@ -11,7 +11,7 @@ typedef unsigned long long int ulong_64;
 class Decrypt {
 public:
 	Decrypt(std::string input, std::string output, 
-	             ulong_64 key1 , ulong_64 key2);
+	             ulong_64 key1 , ulong_64 key2, ulong_64 d);
 private:
 	void decrypt();
 	ulong_64 m_ring;

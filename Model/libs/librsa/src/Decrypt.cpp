@@ -2,7 +2,7 @@
 
 
 Decrypt::Decrypt(std::string input, std::string output, 
-                      ulong_64 key1 , ulong_64 key2)
+                      ulong_64 key1 , ulong_64 key2, ulong_64 d)
 {
   m_path_input = input;
 
@@ -20,9 +20,7 @@ Decrypt::Decrypt(std::string input, std::string output,
 	m_e = key1;
 	m_d = key2;
 	m_ring = m_e * m_d;
-	/* Leitura
-		leitura do .agc
-	*/
+
   m_input.open(m_path_input);
 	
 }
