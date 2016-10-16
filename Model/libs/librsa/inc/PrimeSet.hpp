@@ -10,7 +10,7 @@ public:
         unsigned long long int getNthPrime( ulong_64 idx ) const;
         unsigned long long int getSize() const;
 private:
-        vector<unsigned long long int> m_primes;
+        vector<unsigned long long int> * m_primes;
 };
 
 #endif // !PRIMESET_HPP
