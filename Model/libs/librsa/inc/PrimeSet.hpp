@@ -3,14 +3,14 @@
 
 #include "../../libhuffman/inc/Globals.hpp"
 #include "Math2.hpp"
+#include <algorithm>
 class PrimeSet {
 public:
         PrimeSet();
-        bool isPrime(unsigned long long int idx);
-        unsigned long long int getPos(unsigned long long int idx) const;
+        unsigned long long int getNthPrime( ulong_64 idx ) const;
         unsigned long long int getSize() const;
 private:
-        set<unsigned long long int> m_primes;
+        vector<unsigned long long int> m_primes;
 };
 
 #endif // !PRIMESET_HPP

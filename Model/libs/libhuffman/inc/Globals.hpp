@@ -13,6 +13,8 @@ using namespace std;
 #include <cstddef>
 #include <bitset>
 #include <set>
+#include <cstdio>
+#include <algorithm>
 #define ASCII_SIZE 256
 #define READMAX 1<<15
 
