@@ -18,6 +18,8 @@ PrimeSet::PrimeSet() {
   primes->insert(v);
   primes->erase(0);
   int idx = 0;
+  cout << "Tamanho do set " << primes->size() << endl;
+  cout << "Os primos ";
   for( auto p : *primes )
   {
     if( idx++ <= 20 ) cout << p << " ";
