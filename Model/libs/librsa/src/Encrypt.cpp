@@ -14,20 +14,21 @@ Encrypt::Encrypt(string input, string output = "") {
   m_path_output = m_path_output.substr(0, dot);
   m_path_output += ".agc";
 
-  std::cout << "1" << endl;
+  std::cout << "1" << std::endl;
   m_primes = PrimeSet();
-  std::cout << "2" << endl;
+  std::cout << "2" << std::endl;
   srand (time(NULL));
-  std::cout << "3" << endl;
-  choosePair();
-  std::cout << "4" << endl;
-  totiente();
-  std::cout << "5" << endl;
-  loadMedia(input);
-  std::cout << "6" << endl;
-  encrypt();
-  std::cout << "Keys: " << m_p << "\t" << m_q << "\n";
-  std::cout << "Exps: " << m_e << "\t" << m_d << "\n"; 
+  std::cout << "Set size: " << m_primes.getSize() << std::endl;
+//   std::cout << "3" << std::endl;
+//   choosePair();
+//   std::cout << "4" << std::endl;
+//   totiente();
+//   std::cout << "5" << std::endl;
+//   loadMedia(input);
+//   std::cout << "6" << std::endl;
+//   encrypt();
+//   std::cout << "Keys: " << m_p << "\t" << m_q << "\n";
+//   std::cout << "Exps: " << m_e << "\t" << m_d << "\n"; 
 }
 
 void Encrypt::pickOdd() {
@@ -45,6 +46,7 @@ void Encrypt::choosePair() {
  		m_p = m_primes.getNthPrime( rand()%size );
   		m_q = m_primes.getNthPrime( rand()%size );
   		m_ring = m_p * m_q;
+                cout << m_ring << endl;
   	} while( m_ring <= 256 );
 }
 bool Encrypt::loadMedia(string iPath) {
