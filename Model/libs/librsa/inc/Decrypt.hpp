@@ -17,6 +17,8 @@ private:
 	ulong_64 m_ring;
 	ulong_64 m_e;
 	ulong_64 m_d;
+	ulong_64 m_p;
+	ulong_64 m_q;
 	std::ifstream m_input;
 	std::ofstream m_output;
 	std::string m_path_input;
