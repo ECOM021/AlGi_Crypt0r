@@ -34,10 +34,12 @@ void Encrypt::totiente() {
 	m_multply = (m_p-1) * (m_q-1);
 }
 void Encrypt::choosePair() {
- 	m_p = m_primes.getNthPrime( rand()%MAX_IDX );
-  	m_q = m_primes.getNthPrime( rand()%MAX_IDX );
-  	m_ring = m_p * m_q;
-  	if( m_ring <= 256 ) choosePair();
+	ulong_64 size = m_primes.getSize();
+	do {
+ 		m_p = m_primes.getNthPrime( rand()%size );
+  		m_q = m_primes.getNthPrime( rand()%size );
+  		m_ring = m_p * m_q;
+  	} while( m_ring <= 256 );
 }
 bool Encrypt::loadMedia(string iPath) {
 	m_in.open(iPath, fstream::in | std::fstream::binary);
