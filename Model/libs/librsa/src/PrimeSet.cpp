@@ -5,7 +5,7 @@ PrimeSet::PrimeSet() {
   input.open("../AlGi_Crypt0r/assets/primes.txt", fstream::in);
   ulong_64 v = 0;
   char c;
-  m_primes = new vector<ulong_64>();
+  m_primes = new vector<ulong_64>(10000000);
   set<ulong_64> *primes = new set<ulong_64>();
   while (input.get(c)) {
     if( c < '0' || c > '9' ) {
@@ -18,7 +18,11 @@ PrimeSet::PrimeSet() {
   primes->insert(v);
   primes->erase(0);
   int idx = 0;
-  m_primes(primes->begin(), primes->end());
+  for( auto p : *primes )
+  {
+    if( idx++ <= 20 ) cout << p << " ";
+    m_primes->push_back(p);
+  }
   sort( m_primes->begin() , m_primes->end()  );
   std::cout << "Vector size: " << m_primes->size() << std::endl;
   delete primes;
