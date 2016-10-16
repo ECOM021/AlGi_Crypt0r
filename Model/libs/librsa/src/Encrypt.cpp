@@ -14,15 +14,22 @@ Encrypt::Encrypt(string input, string output = "") {
   m_path_output = m_path_output.substr(0, dot);
   m_path_output += ".agc";
 
+  std::cout << "1" << endl;
   m_primes = PrimeSet();
+  std::cout << "2" << endl;
   srand (time(NULL));
+  std::cout << "3" << endl;
   choosePair();
+  std::cout << "4" << endl;
   totiente();
+  std::cout << "5" << endl;
   loadMedia(input);
+  std::cout << "6" << endl;
   encrypt();
   std::cout << "Keys: " << m_p << "\t" << m_q << "\n";
   std::cout << "Exps: " << m_e << "\t" << m_d << "\n"; 
 }
+
 
 void Encrypt::pickOdd() {
 	m_e = 3;
