@@ -21,6 +21,9 @@ Encrypt::Encrypt(string input, string output = "") {
   std::cout << "Set size: " << m_primes.getSize() << std::endl;
    std::cout << "3" << std::endl;
    choosePair();
+   std::cout << "first ten:" << std::endl;
+   for(int i = 0; i < 10; ++i)
+        cout << m_primes.getNthPrime(i) << endl;
 //   std::cout << "4" << std::endl;
 //   totiente();
 //   std::cout << "5" << std::endl;
