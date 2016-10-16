@@ -4,26 +4,65 @@
 using namespace std;
 
 Window::Window()
-: m_ButtonBox(Gtk::ORIENTATION_HORIZONTAL),
-  m_Button_File("Choose File"),
-  m_Button_Folder("Choose Folder")
+: m_VBox_areas(Gtk::ORIENTATION_VERTICAL),
+  m_HBox_command(Gtk::ORIENTATION_HORIZONTAL),
+  m_HBox_input(Gtk::ORIENTATION_HORIZONTAL),
+  m_HBox_output(Gtk::ORIENTATION_HORIZONTAL),
+  m_Button_File  ("Browse"),
+  m_Button_Folder("Browse"),
+  m_Button_Encrypt("Encrypt"),
+  m_Button_Decrypt("Decrypt")
 {
-  set_default_size(360, 480);
   set_title("AlGi_crypt0r");
   set_position(Gtk::WIN_POS_CENTER);
   set_border_width(10);
 
-  add(m_ButtonBox);
+  add(m_VBox_areas);
+  m_VBox_areas.pack_start(m_VBox_info);
+  m_VBox_areas.pack_start(m_HBox_input);
+  m_VBox_areas.pack_start(m_HBox_output);
+  m_VBox_areas.pack_start(m_HBox_command);
 
-  m_ButtonBox.pack_start(m_Button_File);
+  auto infoBarContainer =
+    dynamic_cast<Gtk::Container*>(m_InfoBar.get_content_area());
+  if (infoBarContainer)
+    infoBarContainer->add(m_Message_Label);
+
+  m_InfoBar.add_button("_OK", 0);
+  m_VBox_info.pack_start(m_InfoBar, Gtk::PACK_SHRINK);
+  m_InfoBar.signal_response().connect(sigc::mem_fun(*this,
+              &Window::on_infobar_response) );
+
+  m_HBox_input.pack_start(m_input);
+  m_input.set_max_length(128);
+  m_input.set_text("");
+  m_input.set_placeholder_text("Input");
+  m_input.select_region(0, m_input.get_text_length());
+
+  m_HBox_input.pack_start(m_Button_File);
   m_Button_File.signal_clicked().connect(sigc::mem_fun(*this,
               &Window::on_button_file_clicked) );
+  
+  m_HBox_output.pack_start(m_output);
+  m_output.set_max_length(128);
+  m_output.set_text("");
+  m_output.set_placeholder_text("Output");
+  m_output.select_region(0, m_output.get_text_length());
 
-  m_ButtonBox.pack_start(m_Button_Folder);
+  m_HBox_output.pack_start(m_Button_Folder);
   m_Button_Folder.signal_clicked().connect(sigc::mem_fun(*this,
               &Window::on_button_folder_clicked) );
 
+  m_HBox_command.pack_start(m_Button_Encrypt);
+  m_Button_Encrypt.signal_clicked().connect(sigc::mem_fun(*this,
+              &Window::on_button_encrypt_clicked) );
+  
+  m_HBox_command.pack_start(m_Button_Decrypt);
+  m_Button_Decrypt.signal_clicked().connect(sigc::mem_fun(*this,
+              &Window::on_button_decrypt_clicked) );
+
   show_all_children();
+  m_InfoBar.hide();
 }
 
 Window::~Window()
@@ -58,6 +97,7 @@ void Window::on_button_folder_clicked()
       cout << "Select clicked." << endl;
       m_folder = dialog.get_filename();
       cout << "Folder selected: " << m_folder << endl;
+      m_output.set_text(m_folder);
       break;
     }
     case(Gtk::RESPONSE_CANCEL):
@@ -115,6 +155,7 @@ void Window::on_button_file_clicked()
       //Notice that this is a string, not a Glib::ustring.
       m_file = dialog.get_filename();
       cout << "File selected: " <<  m_file << endl;
+      m_input.set_text(m_file);
       break;
     }
     case(Gtk::RESPONSE_CANCEL):
@@ -128,4 +169,25 @@ void Window::on_button_file_clicked()
       break;
     }
   }
+}
+
+void Window::on_button_encrypt_clicked() {
+  cout << "Encrypt: " << m_file << " into folder " << m_folder << endl;
+  //Adicionar Funções de Compressão e Encriptografia
+  m_Message_Label.set_text("Encrypt ended");
+  m_InfoBar.set_message_type(Gtk::MESSAGE_INFO);
+  m_InfoBar.show();
+}
+
+void Window::on_button_decrypt_clicked() {
+  cout << "Decrypt: " << m_file << " into folder " << m_folder << endl;
+  //Adicionar Funções de Descriptografia e Descompressão
+  m_Message_Label.set_text("Decrypt Ended");
+  m_InfoBar.set_message_type(Gtk::MESSAGE_INFO);
+  m_InfoBar.show();
+}
+
+void Window::on_infobar_response(int response) {
+  m_Message_Label.set_text("");
+  m_InfoBar.hide();
 }
