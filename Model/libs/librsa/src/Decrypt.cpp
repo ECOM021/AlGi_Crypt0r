@@ -17,9 +17,10 @@ Decrypt::Decrypt(std::string input, std::string output,
   m_path_output = m_path_output.substr(0, dot);
   m_path_output += ".huff";
 
-	m_e = key1;
-	m_d = key2;
-	m_ring = m_e * m_d;
+	m_p = key1;
+	m_q = key2;
+  m_d = d;
+	m_ring = key1 * key2;
 
   m_input.open(m_path_input);
 	
