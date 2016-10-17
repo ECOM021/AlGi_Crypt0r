@@ -17,12 +17,19 @@ Encrypt::Encrypt(string input, string output = "") {
         m_path_output += ".agc";
 
         do {
+                cout << "1" << endl;
                 m_primes = PrimeSet();
+                cout << "set size: "<< m_primes.getSize() << endl;
                 srand (time(NULL));
+                cout << "3" << endl;
                 choosePair();
+                cout << "4" << endl;
                 totiente();
+                cout << "5" << endl;
                 pickOdd();
+                cout << "6" << endl;
                 if(!loadMedia(input)) continue;
+                cout << "7" << endl;
                 encrypt();
                 std::cout << "Keys: " << m_p << "\t" << m_q << endl;
                 std::cout << "P * Q: " << m_p * m_q << endl;
@@ -36,13 +43,15 @@ Encrypt::Encrypt(string input, string output = "") {
 }
 
 void Encrypt::pickOdd() {
+        cout << m_p << " " << m_q << " " << m_p * m_q << endl;
 	cout << "Key E " << endl;
-	while (true)
+	m_e = 3;
+        while (true)
 	{
-		m_e = 3;
 		if (m_e >= 2 && Math2::gcd(m_e, m_multply) == 1)
 			break;
 		m_e += 2;
+                cout << m_e << endl;
 	}
 	cout << "Key D " << endl;
 	for (ulong_64 i = 2; i < m_multply ; ++i)
