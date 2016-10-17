@@ -5,9 +5,13 @@
 #include "../../Model/libs/libhuffman/inc/Encode.hpp"
 #include "../../Model/libs/librsa/inc/Decrypt.hpp"
 #include "../../Model/libs/librsa/inc/Encrypt.hpp"
+#include "../../Control/inc/Filter.hpp"
 
 #include <gtkmm.h>
 #include <string>
+#include <iostream>
+#include <fstream>
+#include <cstdio>
 
 using namespace std;
 

@@ -132,6 +132,6 @@ vector<uchar> Encode::getRepresentation() const{
         return m_represent;
 }
 
-string Encode::getOuput() {
+string Encode::getOutput() {
         return m_oPath;
 }
