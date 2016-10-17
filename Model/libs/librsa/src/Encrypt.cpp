@@ -44,8 +44,7 @@ void Encrypt::choosePair() {
   		m_q = m_primes.getNthPrime( rand()%size );
   		m_ring = m_p * m_q;
   		cout << "Primes " << m_p << "\t\t" << m_q << endl;
-  		return; 
-                cout << m_ring << endl;
+        cout << m_ring << endl;
   	} while( m_ring <= 256 );
 }
 bool Encrypt::loadMedia(string iPath) {
