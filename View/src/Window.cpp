@@ -40,7 +40,7 @@ Window::Window()
     keyBarContainer->add(m_Key_Label);
   
   m_KeyBar.add_button("_OK", 0);
-  m_VBox_info.pack_start(m_KeyBar, Gtk::PACK_SHRINK);
+  m_VBox_key.pack_start(m_KeyBar, Gtk::PACK_SHRINK);
   m_KeyBar.signal_response().connect(sigc::mem_fun(*this,
               &Window::on_keybar_response) );
 
@@ -74,6 +74,7 @@ Window::Window()
 
   show_all_children();
   m_InfoBar.hide();
+  m_KeyBar.hide();
 }
 
 Window::~Window()
@@ -203,7 +204,7 @@ void Window::on_infobar_response(int response) {
   m_InfoBar.hide();
 }
 
-void on_keybar_response(int response) {
-  m_Message_Label.set_text("");
+void Window::on_keybar_response(int response) {
+  m_Key_Label.set_text("");
   m_KeyBar.hide();
 }
