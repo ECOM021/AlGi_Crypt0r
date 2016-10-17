@@ -19,7 +19,7 @@ Encrypt::Encrypt(string input, string output = "") {
                 srand (time(NULL));
                 choosePair();
                 totiente();
-                if(loadMedia(input)) continue;
+                if(!loadMedia(input)) continue;
                 encrypt();
                 std::cout << "Keys: " << m_p << "\t" << m_q << "\n";
                 std::cout << "Exps: " << m_e << "\t" << m_d << "\n"; 
