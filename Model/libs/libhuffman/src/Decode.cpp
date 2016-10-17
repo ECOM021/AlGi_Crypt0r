@@ -15,9 +15,6 @@ Decode::Decode(string input, string output) {
         std::size_t dot  = m_oPath.find_last_of(".");
         m_oPath = m_oPath.substr(0, dot);
         m_oPath += ".huff";
-        
-        for(int i = 0; i < 5; ++i)
-                m_oPath.pop_back();
                 
         if( !loadMedia() )
                 return;
