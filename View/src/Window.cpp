@@ -175,6 +175,11 @@ void Window::on_button_file_clicked()
   }
 }
 
+ ulong_64 ggg( ulong_64 a, ulong_64 b ) {
+	  if( !b ) return a;
+	  return ggg( b, a%b );
+  }
+
 void Window::on_button_encrypt_clicked() {
   cout << "Encrypt: " << m_file << " into folder " << m_folder << endl;
 
@@ -188,6 +193,9 @@ void Window::on_button_encrypt_clicked() {
                              "\nQ: " + enc.getKeyQ() +
                              "\nE: " + enc.getKeyE() +
                              "\nD: " + enc.getKeyD());
+
+  cout << ggg(46104716042080, 140736970270080) << endl;
+
   m_KeyBar.set_message_type(Gtk::MESSAGE_INFO);
   m_KeyBar.show();
 }

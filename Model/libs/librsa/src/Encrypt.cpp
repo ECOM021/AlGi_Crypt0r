@@ -25,7 +25,7 @@ Encrypt::Encrypt(string input, string output = "") {
                 encrypt();
                 std::cout << "Keys: " << m_p << "\t" << m_q << endl;
                 std::cout << "P * Q: " << m_p * m_q << endl;
-                std::cout << "(P-1) * (Q-1): " << (m_p - 1) * (m_q -1) << endl;
+                std::cout << "(P-1)*(Q-1): " << (m_p - 1) * (m_q -1) << endl;
                 std::cout << "Exps: " << m_e << "\t" << m_d << endl; 
         } while(0);
 }
