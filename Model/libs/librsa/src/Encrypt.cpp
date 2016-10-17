@@ -6,15 +6,15 @@ Encrypt::Encrypt(string input, string output = "") {
         //Pick FilePath
         std::size_t dash = input.find_last_of("/\\");
         if(output == "")
-        m_path_output = input.substr(0,dash);
+                m_path_output = input.substr(0,dash);
+        else
+                m_path_output = output;
         m_path_output += "/" + input.substr(dash+1);
-
+        
         //Pick FileName
         std::size_t dot  = m_path_output.find_last_of(".");
         m_path_output = m_path_output.substr(0, dot);
         m_path_output += ".agc";
-
-        cout << "Arquivo de saida: " << m_path_output << endl;
 
         do {
                 m_primes = PrimeSet();

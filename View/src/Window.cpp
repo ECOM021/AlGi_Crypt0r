@@ -173,7 +173,6 @@ void Window::on_button_file_clicked()
 
 void Window::on_button_encrypt_clicked() {
   cout << "Encrypt: " << m_file << " into folder " << m_folder << endl;
-  //Adicionar Funções de Compressão e Encriptografia
 
   Encrypt(m_file, m_folder);
 
