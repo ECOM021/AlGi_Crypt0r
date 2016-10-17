@@ -194,7 +194,7 @@ void Window::on_button_encrypt_clicked() {
                              "\nE: " + enc.getKeyE() +
                              "\nD: " + enc.getKeyD());
 
-  cout << ggg(46104716042080, 140736970270080) << endl;
+  cout << ggg(61784481435808,3) << endl << (3 * 8261533655481)%(61784481435808) << endl;
 
   m_KeyBar.set_message_type(Gtk::MESSAGE_INFO);
   m_KeyBar.show();
