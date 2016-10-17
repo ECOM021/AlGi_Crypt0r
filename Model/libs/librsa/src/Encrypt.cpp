@@ -36,6 +36,7 @@ Encrypt::Encrypt(string input, string output = "") {
 }
 
 void Encrypt::pickOdd() {
+	cout << "Key E " << endl;
 	while (true)
 	{
 		m_e = 3;
@@ -43,6 +44,7 @@ void Encrypt::pickOdd() {
 			break;
 		m_e += 2;
 	}
+	cout << "Key D " << endl;
 	m_d = m_multply / m_e;
 	while (true)
 	{
