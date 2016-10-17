@@ -185,7 +185,7 @@ void Window::on_button_encrypt_clicked() {
 
   Encode comp(m_file, m_folder);
   Encrypt enc(comp.getOutput(), m_folder);
-  //std::remove(comp.getOutput().c_str());
+  std::remove(comp.getOutput().c_str());
 
   m_Message_Label.set_text("Encrypt ended");
   m_InfoBar.set_message_type(Gtk::MESSAGE_INFO);
