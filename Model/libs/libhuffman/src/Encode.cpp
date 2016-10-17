@@ -10,6 +10,7 @@ Encode::Encode(string input, string output) {
 
         occur.resize(ASCII_SIZE, 0);
         if( !loadMedia() ){
+                cout << "Cant open" << endl;
                 return;
         }
         countBytes();
