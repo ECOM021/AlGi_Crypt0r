@@ -18,7 +18,7 @@ class Encode {
          unordered_map< uchar, vector<bool> > getCodes() const;
          vector<uchar> getRepresentation() const;
          string SplitFilename (string str);
-
+         string getOuput();
  private:
          string m_iPath;
          string m_oPath;

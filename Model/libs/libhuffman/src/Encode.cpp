@@ -131,3 +131,7 @@ unordered_map< uchar, vector<bool> > Encode::getCodes() const {
 vector<uchar> Encode::getRepresentation() const{
         return m_represent;
 }
+
+string Encode::getOuput() {
+        return m_oPath;
+}
