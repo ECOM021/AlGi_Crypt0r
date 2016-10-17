@@ -10,7 +10,7 @@ PrimeSet::PrimeSet() {
     }
     ulong_64 v = 0;
     char c;
-    m_primes = new vector<ulong_64>(10000000);
+    m_primes = new vector<ulong_64>();
     set<ulong_64> *primes = new set<ulong_64>();
     while (input.get(c)) {
       if( c < '0' || c > '9' ) {
@@ -22,9 +22,8 @@ PrimeSet::PrimeSet() {
     }
     primes->insert(v);
     primes->erase(0);
-    ulong_64 idx = 0;
     for( auto p : *primes )
-    m_primes->operator[](idx++) = p;
+      m_primes->push_back(p);
 
     sort( m_primes->begin() , m_primes->end()  );
     delete primes;
