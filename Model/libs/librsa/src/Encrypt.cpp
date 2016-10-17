@@ -1,18 +1,18 @@
 #include "../inc/Encrypt.hpp"
 
 Encrypt::Encrypt(string input, string output = "") {
-  m_path_input = input;
+        m_path_input = input;
 
-  //Pick FilePath
-  std::size_t dash = input.find_last_of("/\\");
-  if(output == "")
+        //Pick FilePath
+        std::size_t dash = input.find_last_of("/\\");
+        if(output == "")
         m_path_output = input.substr(0,dash);
-  m_path_output += "/" + input.substr(dash+1);
-  
-  //Pick FileName
-  std::size_t dot  = m_path_output.find_last_of(".");
-  m_path_output = m_path_output.substr(0, dot);
-  m_path_output += ".agc";
+        m_path_output += "/" + input.substr(dash+1);
+
+        //Pick FileName
+        std::size_t dot  = m_path_output.find_last_of(".");
+        m_path_output = m_path_output.substr(0, dot);
+        m_path_output += ".agc";
 
         do {
                 m_primes = PrimeSet();
