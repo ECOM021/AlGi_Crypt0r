@@ -14,6 +14,8 @@ Encrypt::Encrypt(string input, string output = "") {
         m_path_output = m_path_output.substr(0, dot);
         m_path_output += ".agc";
 
+        cout << "Arquivo de saida: " << m_path_output << endl;
+
         do {
                 m_primes = PrimeSet();
                 srand (time(NULL));
