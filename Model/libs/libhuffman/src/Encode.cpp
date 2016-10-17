@@ -1,12 +1,21 @@
 #include "../inc/Encode.hpp"
 
 Encode::Encode(string input, string output) {
-
         m_iPath = input;
-        if(output == "")
-                m_oPath = input + ".huff";
+        m_oPath = output;
+
+        //Pick filepath
+        std::size_t dash = m_iPath.find_last_of("/\\");
+        if(m_oPath == "")
+                m_oPath = m_iPath.substr(0,dash);
         else
                 m_oPath = output;
+        m_oPath += "/" + input.substr(dash+1);
+        
+        //Pick FileName
+        std::size_t dot  = m_oPath.find_last_of(".");
+        m_oPath = m_oPath.substr(0, dot);
+        m_oPath += ".huff";
 
         occur.resize(ASCII_SIZE, 0);
         if( !loadMedia() ){
