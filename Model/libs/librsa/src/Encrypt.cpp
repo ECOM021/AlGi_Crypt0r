@@ -36,10 +36,20 @@ Encrypt::Encrypt(string input, string output = "") {
 }
 
 void Encrypt::pickOdd() {
-	m_e = 3;
-	while( Math2::gcd(m_e,m_multply) > 1 )
-		m_e += 2;
-	m_d = Math2::inv( m_e , m_multply );
+	while (true)
+	{
+		m_e = rand() % m_multply;
+		if (m_e >= 2 && Math2::gcd(m_e, m_multply) == 1)
+			break;
+	}
+	m_d = m_multply / m_e;
+	while (true)
+	{
+		if (((m_d * m_ek) % m_multply) == 1)
+			break;
+		else 
+			++m_d;
+	}
 }
 void Encrypt::totiente() {
 	m_multply = (m_p-1) * (m_q-1);
