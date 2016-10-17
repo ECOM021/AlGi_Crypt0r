@@ -21,6 +21,7 @@ Encrypt::Encrypt(string input, string output = "") {
                 srand (time(NULL));
                 choosePair();
                 totiente();
+                pickOdd();
                 if(!loadMedia(input)) continue;
                 encrypt();
                 std::cout << "Keys: " << m_p << "\t" << m_q << endl;

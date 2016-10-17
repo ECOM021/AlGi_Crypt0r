@@ -15,7 +15,7 @@ ulong_64 Math2::exp(ulong_64 base, ulong_64 _exp, ulong_64 mod) {
   }
 }
 ulong_64 Math2::inv(ulong_64 value, ulong_64 mod) {
-  return exp(value, mod-1, mod);
+  return exp(value, mod-2, mod);
 }
 ulong_64 Math2::gcd( ulong_64 a, ulong_64 b ) {
 	if( !b ) return a;
