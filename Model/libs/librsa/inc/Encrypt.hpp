@@ -10,10 +10,10 @@ using namespace std;
 class Encrypt {
 public:
         Encrypt(string input, string output);
-        string getKeyP();
-        string getKeyQ();
-        string getKeyD();
-        string getKeyE();
+        ulong_64 getKeyP();
+        ulong_64 getKeyQ();
+        ulong_64 getKeyD();
+        ulong_64 getKeyE();
 private:
         void pickOdd();
         void totiente();

@@ -175,9 +175,9 @@ void Window::on_button_file_clicked()
   }
 }
 
- ulong_64 ggg( ulong_64 a, ulong_64 b ) {
+ ulong_64 gcd( ulong_64 a, ulong_64 b ) {
 	  if( !b ) return a;
-	  return ggg( b, a%b );
+	  return gcd( b, a%b );
   }
 
 void Window::on_button_encrypt_clicked() {
@@ -189,12 +189,10 @@ void Window::on_button_encrypt_clicked() {
   m_InfoBar.set_message_type(Gtk::MESSAGE_INFO);
   m_InfoBar.show();
 
-  m_Key_Label.set_text("Keys: \nP: " + enc.getKeyP() +
-                             "\nQ: " + enc.getKeyQ() +
-                             "\nE: " + enc.getKeyE() +
-                             "\nD: " + enc.getKeyD());
-
-  cout << ggg(61784481435808,3) << endl << (3 * 8261533655481)%(61784481435808) << endl;
+  m_Key_Label.set_text("Keys: \nP: " + to_string(enc.getKeyP()) +
+                             "\nQ: " + to_string(enc.getKeyQ()) +
+                             "\nE: " + to_string(enc.getKeyE()) +
+                             "\nD: " + to_string(enc.getKeyD()));
 
   m_KeyBar.set_message_type(Gtk::MESSAGE_INFO);
   m_KeyBar.show();

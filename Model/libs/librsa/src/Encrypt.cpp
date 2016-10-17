@@ -27,7 +27,11 @@ Encrypt::Encrypt(string input, string output = "") {
                 std::cout << "Keys: " << m_p << "\t" << m_q << endl;
                 std::cout << "P * Q: " << m_p * m_q << endl;
                 std::cout << "(P-1)*(Q-1): " << (m_p - 1) * (m_q -1) << endl;
-                std::cout << "Exps: " << m_e << "\t" << m_d << endl; 
+                std::cout << "Exps: " << m_e << "\t" << m_d << endl;
+                cout << "gcd(E, Phi) :";
+                cout << Math2::gcd(m_e, (m_p - 1) * (m_q -1)) << endl;
+                cout << "(E*D)%phi: ";
+                cout << (m_e * m_d) % ((m_p-1)*(m_q-1)) << endl;
         } while(0);
 }
 
@@ -70,18 +74,18 @@ void Encrypt::encrypt() {
         } while (0);
 }
 
-string Encrypt::getKeyP() {
-        return to_string(m_p);
+ulong_64 Encrypt::getKeyP() {
+        return m_p;
 }
 
-string Encrypt::getKeyQ() {
-        return to_string(m_q);
+ulong_64 Encrypt::getKeyQ() {
+        return m_q;
 }
 
-string Encrypt::getKeyD() {
-        return to_string(m_d);
+ulong_64 Encrypt::getKeyD() {
+        return m_d;
 }
 
-string Encrypt::getKeyE() {
-        return to_string(m_e);
+ulong_64 Encrypt::getKeyE() {
+        return m_e;
 }
