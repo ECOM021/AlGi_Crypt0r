@@ -36,7 +36,7 @@ void Decrypt::decrypt() {
   else std::cout << "fechado" << std::endl;
   while (input.get(c)) {
     if( c < '0' || c > '9' ) {
-      file << (uchar)( Math2::inv(m_d,m_ring) );  
+      file << (uchar)( Math2::exp(v,m_d,m_ring) );  
       v = 0;
       continue;
     }
