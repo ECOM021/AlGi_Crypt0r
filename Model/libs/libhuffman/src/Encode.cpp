@@ -3,7 +3,6 @@
 Encode::Encode(string input, string output) {
 
         m_iPath = input;
-        cout << "Name ---- " << endl;
         if(output == "")
                 m_oPath = input + ".huff";
         else
@@ -44,12 +43,10 @@ void Encode::buildRepresent( Node * subtree ) {
         if( subtree->isLeaf() ) {
                 if( subtree->getSymb() == '*'
                         || subtree->getSymb() == '!' )
-                        m_represent.push_back('!'), cout << "!";
+                        m_represent.push_back('!');
                 m_represent.push_back( subtree->getSymb() );
-                cout << subtree->getSymb();
         } else {
                 m_represent.push_back('*');
-                cout << "*";
                 buildRepresent(subtree->getLeft());
                 buildRepresent(subtree->getRight());
         }

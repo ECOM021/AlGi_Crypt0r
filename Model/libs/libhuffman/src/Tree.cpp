@@ -16,10 +16,7 @@ Tree::Tree ( vector<ulong_64> occur )
       pq.push( new Node( i , occur[i], NULL , NULL  ) );
     }
   }
-  cout << pq.size() << endl;
-  int j = 1;
   while( pq.size() > 1 ) {
-          cout << j++ <<endl;
     Node * lC = pq.top(); pq.pop();
     Node * rC = pq.top(); pq.pop();
     pq.push( new Node( '*' , lC->getOccur() + rC->getOccur() , lC, rC ) );

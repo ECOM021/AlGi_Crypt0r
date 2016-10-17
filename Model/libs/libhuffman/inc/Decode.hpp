@@ -12,6 +12,7 @@ class Decode {
          void getHeader();
          void decodeFile();
          vector<uchar> getRepresentation() const;
+         string getOutput();
  private:
          string m_iPath;
          int m_trash;

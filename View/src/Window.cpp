@@ -183,8 +183,8 @@ void Window::on_button_file_clicked()
 void Window::on_button_encrypt_clicked() {
   cout << "Encrypt: " << m_file << " into folder " << m_folder << endl;
 
-  Encode comp(m_file, m_folder);
-  Encrypt enc(comp.getOutput(), m_folder);
+  //Encode comp(m_file, m_folder);
+  Encrypt enc(m_file, m_folder);
   //std::remove(comp.getOutput().c_str());
 
   m_Message_Label.set_text("Encrypt ended");
@@ -203,7 +203,10 @@ void Window::on_button_encrypt_clicked() {
 void Window::on_button_decrypt_clicked() {
   cout << "Decrypt: " << m_file << " into folder " << m_folder << endl;
 
-  //Adicionar Funções de Descriptografia e Descompressão
+  // Decrypt decrypt(m_file, m_folder);
+  // Decode  decomp(decrypt.getOutput(), m_folder);
+  // std::remove(decrypt.getOutput().c_str());
+  // std::remove(decomp.getOutput().c_str());
 
   m_Message_Label.set_text("Decrypt Ended");
   m_InfoBar.set_message_type(Gtk::MESSAGE_INFO);

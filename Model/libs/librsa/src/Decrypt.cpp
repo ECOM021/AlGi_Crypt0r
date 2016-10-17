@@ -42,3 +42,7 @@ void Decrypt::decrypt() {
   }
   file.close();
 }
+
+std::string Decrypt::getOutput() {
+  return m_path_output;
+}

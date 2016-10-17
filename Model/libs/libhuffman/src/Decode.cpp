@@ -65,7 +65,6 @@ void Decode::decodeFile(){
             }
             binary.pop_front();
         }
-        cout << endl;
         file.close();
         delete []in;
 }
@@ -92,4 +91,8 @@ void Decode::getHeader() {
 
 vector<uchar> Decode::getRepresentation() const{
         return m_represent;
+}
+
+string Decode::getOutput() {
+  return m_oPath;
 }
