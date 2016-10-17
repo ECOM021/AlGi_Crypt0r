@@ -14,14 +14,16 @@ Encrypt::Encrypt(string input, string output = "") {
   m_path_output = m_path_output.substr(0, dot);
   m_path_output += ".agc";
 
-  m_primes = PrimeSet();
-  srand (time(NULL));
-  choosePair();
-  totiente();
-  loadMedia(input);
-  encrypt();
-  std::cout << "Keys: " << m_p << "\t" << m_q << "\n";
-  std::cout << "Exps: " << m_e << "\t" << m_d << "\n"; 
+        do {
+                m_primes = PrimeSet();
+                srand (time(NULL));
+                choosePair();
+                totiente();
+                if(loadMedia(input)) continue;
+                encrypt();
+                std::cout << "Keys: " << m_p << "\t" << m_q << "\n";
+                std::cout << "Exps: " << m_e << "\t" << m_d << "\n"; 
+        } while(0);
 }
 
 void Encrypt::pickOdd() {
@@ -40,7 +42,6 @@ void Encrypt::choosePair() {
  		m_p = m_primes.getNthPrime( rand()%size );
   		m_q = m_primes.getNthPrime( rand()%size );
   		m_ring = m_p * m_q;
-  		cout << "Primes " << m_p << "\t\t" << m_q << endl;
         cout << m_ring << endl;
   	} while( m_ring <= 256 );
 }
@@ -53,6 +54,8 @@ bool Encrypt::loadMedia(string iPath) {
 void Encrypt::encrypt() {
         char * in = new char[READMAX];
         ofstream file(m_path_output);
+        if(file.is_open()) cout << "Saida ABerto" << endl;
+        else cout << "Saida fechado" << endl;
         while(m_in.readsome(in, READMAX))
                 for (int i = 0; i < m_in.gcount() ; i++)
                 	file << Math2::exp((uchar)in[i],m_e,m_ring) << '#';
