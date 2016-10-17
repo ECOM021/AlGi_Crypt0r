@@ -184,7 +184,7 @@ void Window::on_button_encrypt_clicked() {
   cout << "Encrypt: " << m_file << " into folder " << m_folder << endl;
 
   Encode comp(m_file, m_folder);
-  Encrypt enc(m_file, m_folder);
+  Encrypt enc(comp.getOutput(), m_folder);
   //std::remove(comp.getOutput().c_str());
 
   m_Message_Label.set_text("Encrypt ended");
