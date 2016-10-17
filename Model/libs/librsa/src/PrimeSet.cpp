@@ -2,7 +2,9 @@
 
 PrimeSet::PrimeSet() {
   fstream input;
-  input.open("../../../../Assets/primes.txt", fstream::in);
+  input.open("/home/gio/Workspace/algi_crypt0r/Assets/primes.txt", fstream::in);
+  if(input.is_open()) cout << "Aberto" << endl;
+  else cout << "Fechado" << endl;
   ulong_64 v = 0;
   char c;
   m_primes = new vector<ulong_64>(10000000);
@@ -16,16 +18,11 @@ PrimeSet::PrimeSet() {
     else v = v*10 + (c-'0');
   }
   primes->insert(v);
-  cout << "Tamanho do set" << primes->size() << endl;
   primes->erase(0);
   int idx = 0;
-  cout << "Tamanho do set " << primes->size() << endl;
-  cout << "Os primos ";
   for( auto p : *primes )
-  {
-    if( idx++ <= 20 ) cout << p << " ";
     m_primes->push_back(p);
-  }
+    
   sort( m_primes->begin() , m_primes->end()  );
   std::cout << "Vector size: " << m_primes->size() << std::endl;
   delete primes;

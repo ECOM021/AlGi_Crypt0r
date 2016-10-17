@@ -14,16 +14,9 @@ Encrypt::Encrypt(string input, string output = "") {
   m_path_output = m_path_output.substr(0, dot);
   m_path_output += ".agc";
 
-  std::cout << "1" << std::endl;
   m_primes = PrimeSet();
-  std::cout << "2" << std::endl;
   srand (time(NULL));
-  std::cout << "Set size: " << m_primes.getSize() << std::endl;
-   std::cout << "3" << std::endl;
-   choosePair();
-   std::cout << "first ten:" << std::endl;
-   for(int i = 0; i < 10; ++i)
-        cout << m_primes.getNthPrime(i) << endl;
+  choosePair();
 //   std::cout << "4" << std::endl;
 //   totiente();
 //   std::cout << "5" << std::endl;
