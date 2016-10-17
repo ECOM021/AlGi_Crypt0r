@@ -52,13 +52,17 @@ bool Encrypt::loadMedia(string iPath) {
         return false;
 }
 void Encrypt::encrypt() {
-        char * in = new char[READMAX];
-        ofstream file(m_path_output);
-        if(file.is_open()) cout << "Saida ABerto" << endl;
-        else cout << "Saida fechado" << endl;
-        while(m_in.readsome(in, READMAX))
-                for (int i = 0; i < m_in.gcount() ; i++)
-                	file << Math2::exp((uchar)in[i],m_e,m_ring) << '#';
-        file.close();
-        delete []in;
+        do {
+                char * in = new char[READMAX];
+                ofstream file(m_path_output);
+                if(!file.is_open()) {
+                        cout << "Can't writ encrypted file." << endl;
+                        continue;
+                }
+                while(m_in.readsome(in, READMAX))
+                        for (int i = 0; i < m_in.gcount() ; i++)
+                                file << Math2::exp((uchar)in[i],m_e,m_ring) << '#';
+                file.close();
+                delete []in;
+        } while (0);
 }
