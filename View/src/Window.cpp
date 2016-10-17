@@ -207,9 +207,11 @@ void Window::on_button_encrypt_clicked() {
 void Window::on_button_decrypt_clicked() {
   cout << "Decrypt: " << m_file << " into folder " << m_folder << endl;
 
+  cout << "1" << endl;
   Decrypt decrypt(m_file, m_folder, m_p, m_q, m_d);
-  //Decode  decomp(decrypt.getOutput(), m_folder);
-  //std::remove(decrypt.getOutput().c_str());
+  cout << "2" << endl;
+  Decode  decomp(decrypt.getOutput(), m_folder);
+ // std::remove(decrypt.getOutput().c_str());
   //std::remove(decomp.getOutput().c_str());
 
   m_Message_Label.set_text("Decrypt Ended");

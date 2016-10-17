@@ -2,11 +2,20 @@
 
 Decode::Decode(string input, string output) {
         m_iPath = input;
+        m_oPath = output;
+        //Pick FilePath
+        std::size_t dash = m_iPath.find_last_of("/\\");
+        if(m_oPath == "")
+              m_oPath = m_iPath.substr(0,dash);
+        else 
+              m_oPath = output;
+        m_oPath += "/" + m_iPath.substr(dash+1);
 
-        if(output == "")
-                m_oPath = input;
-        else
-                m_oPath = output;
+        //Pick FileName
+        std::size_t dot  = m_oPath.find_last_of(".");
+        m_oPath = m_oPath.substr(0, dot);
+        m_oPath += ".huff";
+        
         for(int i = 0; i < 5; ++i)
                 m_oPath.pop_back();
                 
