@@ -252,17 +252,28 @@ void Window::on_button_okay_clicked() {
   
   m_VBox_inputKey.hide();
   
-  m_p = stoull(m_keyP.get_text());
-  m_q = stoull(m_keyQ.get_text());
-  m_d = stoull(m_keyD.get_text());
-
-  Decode  decomp(m_file, m_folder);
-  Decrypt decrypt(decomp.getOutput(), m_folder, m_p, m_q, m_d);
-  Decode  decom(decrypt.getOutput(), m_folder);
-  std::remove(decrypt.getOutput().c_str());
-  m_Message_Label.set_text("Decrypt Ended");
-  m_InfoBar.set_message_type(Gtk::MESSAGE_INFO);
-  m_InfoBar.show();
+  try {
+      m_p = stoull(m_keyP.get_text());
+      m_q = stoull(m_keyQ.get_text());
+      m_d = stoull(m_keyD.get_text());
+      std::size_t dot = m_file.find_last_of(".");
+      std::string ext = m_file.substr(dot+1);
+      if( ext != "huff" )
+        m_p = stoull("a");
+      Decode  decomp(m_file, m_folder);
+      Decrypt decrypt(decomp.getOutput(), m_folder, m_p, m_q, m_d);
+      Decode  decom(decrypt.getOutput(), m_folder);
+      std::remove(decrypt.getOutput().c_str());
+      std::remove(decomp.getOutput().c_str());
+      m_Message_Label.set_text("Decrypt Ended");
+      m_InfoBar.set_message_type(Gtk::MESSAGE_INFO);
+      m_InfoBar.show();
+  }
+  catch (const std::invalid_argument& ia) {
+    m_Message_Label.set_text("Invalid Input");
+    m_InfoBar.set_message_type(Gtk::MESSAGE_INFO);
+    m_InfoBar.show();
+  }
   
   m_keyP.set_text("");
   m_keyQ.set_text("");
