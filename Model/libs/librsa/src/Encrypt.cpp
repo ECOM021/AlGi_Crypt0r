@@ -38,9 +38,10 @@ Encrypt::Encrypt(string input, string output = "") {
 void Encrypt::pickOdd() {
 	while (true)
 	{
-		m_e = rand() % m_multply;
+		m_e = 3;
 		if (m_e >= 2 && Math2::gcd(m_e, m_multply) == 1)
 			break;
+		m_e += 2;
 	}
 	m_d = m_multply / m_e;
 	while (true)
