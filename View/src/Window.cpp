@@ -8,10 +8,12 @@ Window::Window()
   m_HBox_command(Gtk::ORIENTATION_HORIZONTAL),
   m_HBox_input(Gtk::ORIENTATION_HORIZONTAL),
   m_HBox_output(Gtk::ORIENTATION_HORIZONTAL),
+  m_VBox_inputKey(Gtk::ORIENTATION_VERTICAL),
   m_Button_File  ("Browse"),
   m_Button_Folder("Browse"),
   m_Button_Encrypt("Encrypt"),
-  m_Button_Decrypt("Decrypt")
+  m_Button_Decrypt("Decrypt"),
+  m_Button_okay("Okay")
 {
   set_title("AlGi_crypt0r");
   set_position(Gtk::WIN_POS_CENTER);
@@ -23,6 +25,7 @@ Window::Window()
   m_VBox_areas.pack_start(m_HBox_input);
   m_VBox_areas.pack_start(m_HBox_output);
   m_VBox_areas.pack_start(m_HBox_command);
+  m_VBox_areas.pack_start(m_VBox_inputKey);
 
   auto infoBarContainer =
     dynamic_cast<Gtk::Container*>(m_InfoBar.get_content_area());
@@ -72,9 +75,33 @@ Window::Window()
   m_Button_Decrypt.signal_clicked().connect(sigc::mem_fun(*this,
               &Window::on_button_decrypt_clicked) );
 
+  m_VBox_inputKey.pack_start(m_keyP);
+  m_keyP.set_max_length(128);
+  m_keyP.set_text("");
+  m_keyP.set_placeholder_text("P");
+  m_keyP.select_region(0, m_keyP.get_text_length());
+
+  m_VBox_inputKey.pack_start(m_keyQ);
+  m_keyQ.set_max_length(128);
+  m_keyQ.set_text("");
+  m_keyQ.set_placeholder_text("Q");
+  m_keyQ.select_region(0, m_keyQ.get_text_length());
+
+  m_VBox_inputKey.pack_start(m_keyD);
+  m_keyD.set_max_length(128);
+  m_keyD.set_text("");
+  m_keyD.set_placeholder_text("D");
+  m_keyD.select_region(0, m_keyD.get_text_length());
+
+  m_VBox_inputKey.pack_start(m_Button_okay);
+  m_Button_okay.signal_clicked().connect(sigc::mem_fun(*this,
+              &Window::on_button_okay_clicked) );
+
+
   show_all_children();
   m_InfoBar.hide();
   m_KeyBar.hide();
+  m_VBox_inputKey.hide();
 }
 
 Window::~Window()
@@ -208,13 +235,7 @@ void Window::on_button_encrypt_clicked() {
 void Window::on_button_decrypt_clicked() {
   cout << "Decrypt: " << m_file << " into folder " << m_folder << endl;
 
-  Decode  decomp(m_file, m_folder);
-  Decrypt decrypt(decomp.getOutput(), m_folder, m_p, m_q, m_d);
-  Decode  decom(decrypt.getOutput(), m_folder);
-  std::remove(decrypt.getOutput().c_str());
-  m_Message_Label.set_text("Decrypt Ended");
-  m_InfoBar.set_message_type(Gtk::MESSAGE_INFO);
-  m_InfoBar.show();
+  m_VBox_inputKey.show();
 }
 
 void Window::on_infobar_response(int response) {
@@ -225,4 +246,26 @@ void Window::on_infobar_response(int response) {
 void Window::on_keybar_response(int response) {
   m_Key_Label.set_text("");
   m_KeyBar.hide();
+}
+
+void Window::on_button_okay_clicked() {
+  
+  m_VBox_inputKey.hide();
+  
+  m_p = stoull(m_keyP.get_text());
+  m_q = stoull(m_keyQ.get_text());
+  m_d = stoull(m_keyD.get_text());
+
+  Decode  decomp(m_file, m_folder);
+  Decrypt decrypt(decomp.getOutput(), m_folder, m_p, m_q, m_d);
+  Decode  decom(decrypt.getOutput(), m_folder);
+  std::remove(decrypt.getOutput().c_str());
+  m_Message_Label.set_text("Decrypt Ended");
+  m_InfoBar.set_message_type(Gtk::MESSAGE_INFO);
+  m_InfoBar.show();
+  
+  m_keyP.set_text("");
+  m_keyQ.set_text("");
+  m_keyD.set_text("");
+
 }

@@ -5,7 +5,6 @@
 #include "../../Model/libs/libhuffman/inc/Encode.hpp"
 #include "../../Model/libs/librsa/inc/Decrypt.hpp"
 #include "../../Model/libs/librsa/inc/Encrypt.hpp"
-#include "../../Control/inc/Filter.hpp"
 
 #include <gtkmm.h>
 #include <string>
@@ -29,8 +28,10 @@ protected:
   void on_button_folder_clicked();
   void on_button_encrypt_clicked();
   void on_button_decrypt_clicked();
+  void on_button_okay_clicked();
   void on_infobar_response(int response);
   void on_keybar_response(int response);
+
 
   //Child widgets:
   Gtk::InfoBar m_InfoBar;
@@ -46,6 +47,11 @@ protected:
   Gtk::Button m_Button_File, m_Button_Folder;
   
   Gtk::Button m_Button_Encrypt, m_Button_Decrypt;
+
+  Gtk::Box m_VBox_inputKey;
+  Gtk::Entry m_keyP, m_keyQ, m_keyD;
+  Gtk::Button m_Button_okay;
+
 private:
   string m_file;
   string m_folder;
