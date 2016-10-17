@@ -37,12 +37,10 @@ void Encrypt::totiente() {
 }
 void Encrypt::choosePair() {
 	ulong_64 size = m_primes.getSize();
-	cout << size << " ----- choosePair" << endl; 
 	do {
  		m_p = m_primes.getNthPrime( rand()%size );
   		m_q = m_primes.getNthPrime( rand()%size );
   		m_ring = m_p * m_q;
-        cout << m_ring << endl;
   	} while( m_ring <= 256 );
 }
 bool Encrypt::loadMedia(string iPath) {
