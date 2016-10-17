@@ -196,6 +196,10 @@ void Window::on_button_encrypt_clicked() {
                              "\nE: " + to_string(enc.getKeyE()) +
                              "\nD: " + to_string(enc.getKeyD()));
 
+  m_p = enc.getKeyP();
+  m_q = enc.getKeyQ();
+  m_d = enc.getKeyD();
+
   m_KeyBar.set_message_type(Gtk::MESSAGE_INFO);
   m_KeyBar.show();
 }
@@ -203,10 +207,10 @@ void Window::on_button_encrypt_clicked() {
 void Window::on_button_decrypt_clicked() {
   cout << "Decrypt: " << m_file << " into folder " << m_folder << endl;
 
-  // Decrypt decrypt(m_file, m_folder);
-  // Decode  decomp(decrypt.getOutput(), m_folder);
-  // std::remove(decrypt.getOutput().c_str());
-  // std::remove(decomp.getOutput().c_str());
+  Decrypt decrypt(m_file, m_folder, m_p, m_q, m_d);
+  //Decode  decomp(decrypt.getOutput(), m_folder);
+  //std::remove(decrypt.getOutput().c_str());
+  //std::remove(decomp.getOutput().c_str());
 
   m_Message_Label.set_text("Decrypt Ended");
   m_InfoBar.set_message_type(Gtk::MESSAGE_INFO);

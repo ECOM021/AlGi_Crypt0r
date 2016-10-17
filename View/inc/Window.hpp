@@ -49,6 +49,7 @@ protected:
 private:
   string m_file;
   string m_folder;
+  ulong_64 m_p, m_q, m_d;
 };
 
 #endif //WINDOW_HPP

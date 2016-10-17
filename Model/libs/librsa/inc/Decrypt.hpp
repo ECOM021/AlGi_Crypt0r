@@ -3,6 +3,7 @@
 
 #include <fstream>
 #include <string>
+#include <iostream>
 #include "Math2.hpp"
 
 typedef unsigned char uchar;

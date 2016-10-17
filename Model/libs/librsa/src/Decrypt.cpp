@@ -27,11 +27,13 @@ Decrypt::Decrypt(std::string input, std::string output,
 }
 
 void Decrypt::decrypt() {
-  std::ifstream input("../../../../Assets/primes.txt");
+  std::ifstream input();
   ulong_64 v = 0;
   char c;
 
   std::ofstream file(m_path_output);
+  if(file.is_open()) std::cout << "aberto" << std::endl;
+  else std::cout << "fechado" << std::endl;
   while (input.get(c)) {
     if( c < '0' || c > '9' ) {
       file << (uchar)( Math2::inv(m_d,m_ring) );  
