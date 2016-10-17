@@ -46,6 +46,7 @@ void Encrypt::pickOdd() {
 	}
 	cout << "Key D " << endl;
 	m_d = m_multply / m_e;
+
 	while (true)
 	{
 		if (((m_d * m_e) % m_multply) == 1)
