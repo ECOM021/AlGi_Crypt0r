@@ -17,6 +17,7 @@ class Decode {
          string m_iPath;
          int m_trash;
          string m_oPath;
+         string m_name;
          fstream m_input;
          fstream m_output;
          Tree * m_tree;

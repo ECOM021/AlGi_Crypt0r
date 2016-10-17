@@ -17,7 +17,17 @@ ulong_64 Math2::exp(ulong_64 base, ulong_64 _exp, ulong_64 mod) {
 }
 
 ulong_64 Math2::inv(ulong_64 value, ulong_64 mod) {
-  return exp(value, mod-1, mod);
+  	long  long b0 = mod, t, q;
+	long long x0 = 0LL, x1 = 1LL;
+	if (mod == 1) 
+		return 1;
+	while (value > 1) {
+		q = value / mod;
+		t = mod, mod = value % mod, value = t;
+		t = x0, x0 = x1 - q * x0, x1 = t;
+	}
+	if (x1 < 0) x1 += b0;
+	return x1;
 }
 
 ulong_64 Math2::gcd( ulong_64 a, ulong_64 b ) {

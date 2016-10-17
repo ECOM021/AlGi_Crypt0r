@@ -48,19 +48,21 @@ void Encrypt::pickOdd() {
 	m_e = 3;
         while (true)
 	{
-		if (m_e >= 2 && Math2::gcd(m_e, m_multply) == 1)
+		if ( Math2::gcd(m_e, m_multply) == 1 )
 			break;
 		m_e += 2;
                 cout << m_e << endl;
 	}
 	cout << "Key D " << endl;
-	/* for (ulong_64 i = 2; i < m_multply ; ++i)
-	{
-		if( (m_e * i)%m_multply == 1  ) {
-			m_d = i; break;
-		}
-	}*/
 	m_d = Math2::inv( m_e, m_multply );
+        /*int count = 1;
+	while( (m_d * m_e)%m_multply != 1 )
+        {
+                m_d = (m_e*m_d)%m_multply;
+                ++count;
+        }
+        cout << "Vezes: " << count << endl;*/
+
 }
 void Encrypt::totiente() {
 	m_multply = (m_p-1) * (m_q-1);
@@ -71,7 +73,7 @@ void Encrypt::choosePair() {
  		m_p = m_primes.getNthPrime( rand()%size );
   		m_q = m_primes.getNthPrime( rand()%size );
   		m_ring = m_p * m_q;
-  	} while( m_ring <= 256 );
+  	} while( m_ring <= 256 && m_p == m_q );
 }
 bool Encrypt::loadMedia(string iPath) {
 	m_in.open(iPath, fstream::in | std::fstream::binary);
@@ -109,4 +111,8 @@ ulong_64 Encrypt::getKeyD() {
 
 ulong_64 Encrypt::getKeyE() {
         return m_e;
+}
+std::string Encrypt::getOutput()
+{
+        return m_path_output;      
 }

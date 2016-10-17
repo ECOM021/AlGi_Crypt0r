@@ -8,16 +8,12 @@ Decode::Decode(string input, string output) {
         if(m_oPath == "")
               m_oPath = m_iPath.substr(0,dash);
         else 
-              m_oPath = output;
-        m_oPath += "/" + m_iPath.substr(dash+1);
-
-        //Pick FileName
-        std::size_t dot  = m_oPath.find_last_of(".");
-        m_oPath = m_oPath.substr(0, dot);
-                
+              m_oPath = output;            
         if( !loadMedia() )
                 return;
         getHeader();
+        m_oPath += "/" + m_name;
+        cout << "Name do arq " << m_oPath << endl;
         m_tree = new Tree(m_represent);
         decodeFile();
 }
@@ -82,10 +78,9 @@ void Decode::getHeader() {
         sizeTree = in[0]&31;
         sizeTree = (sizeTree<<8)|(in[1]&255);
         sizeName = in[2];
-        string name;
         m_input.readsome(in, sizeName);
         for (int i = 0; i < sizeName ; i++) {
-          name += (char)(in[i]&255);
+          m_name += (char)(in[i]&255);
         }
         m_input.readsome(in, sizeTree);
         for (int i = 0; i < sizeTree ; i++) {
