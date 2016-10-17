@@ -45,14 +45,11 @@ void Encrypt::pickOdd() {
 		m_e += 2;
 	}
 	cout << "Key D " << endl;
-	m_d = m_multply / m_e;
-
-	while (true)
+	for (ulong_64 i = 2; i < m_multply ; ++i)
 	{
-		if (((m_d * m_e) % m_multply) == 1)
-			break;
-		else 
-			++m_d;
+		if( (m_e * i)%m_multply == 1  ) {
+			m_d = i; break;
+		}
 	}
 }
 void Encrypt::totiente() {
