@@ -28,16 +28,16 @@ Encrypt::Encrypt(string input, string output = "") {
                 std::cout << "P * Q: " << m_p * m_q << endl;
                 std::cout << "(P-1)*(Q-1): " << (m_p - 1) * (m_q -1) << endl;
                 std::cout << "Exps: " << m_e << "\t" << m_d << endl;
-                cout << "gcd(E, Phi) :";
-                cout << Math2::gcd(m_e, (m_p - 1) * (m_q -1)) << endl;
-                cout << "(E*D)%phi: ";
-                cout << (m_e * m_d) % ((m_p-1)*(m_q-1)) << endl;
+                std::cout << "gcd(E, Phi) :";
+                std::cout << Math2::gcd(m_e, (m_p - 1) * (m_q -1)) << endl;
+                std::cout << "(E*D)%phi: ";
+                std::cout << (m_e * m_d) % ((m_p-1)*(m_q-1)) << endl;
         } while(0);
 }
 
 void Encrypt::pickOdd() {
 	m_e = 3;
-	while( Math2::gcd(m_e,m_multply) != 1 )
+	while( Math2::gcd(m_e,m_multply) > 1 )
 		m_e += 2;
 	m_d = Math2::inv( m_e , m_multply );
 }

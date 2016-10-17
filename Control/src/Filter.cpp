@@ -1,21 +1,28 @@
 #include "../inc/Filter.hpp"
 
-Filter::Filter(std::string file, std::string folder) {
+Filter::Filter(std::string file, std::string folder, std::string ext) {
+        input = file;
+        output = folder;
 
+        //Pick FilePath
+        std::size_t dash = input.find_last_of("/\\");
+        if(output == "")
+                output = input.substr(0, dash);
+
+        output += "/" + input.substr(dash+1);
+
+        //Pick FileName 
+        std::size_t dot = output.find_last_of(".");
+        output = output.substr(0, dot);
+        output += "."+ext;
 }
 
-void Filter::filterEnc1() {
-
+std::string Filter::getOutput() {
+        return output;
 }
 
-void Filter::filterEnc2() {
-
+std::string Filter::getInput() {
+        return input;
 }
 
-void Filter::filterDec1() {
 
-}
-
-void Filter::filterDec2() {
-
-}

@@ -5,24 +5,11 @@
 
 class Filter {
 public:
-        Filter(std::string file, std::string folder);
-
-        //Encrypt
-        void filterEnc1();
-        void filterEnc2();
-
-        //Decrypt  
-        void filterDec1();
-        void filterDec2();
+        Filter(std::string file, std::string folder, std::string ext);
+        std::string getOutput();
+        std::string getInput();
 private:
-        std::string input;
-        std::string output;
-
-        std::string CompressIn;
-        std::string EncryptIn;
-
-        std::string DecompressIn;
-        std::string DecryptIn;
+        std::string input, output;
 };
 
 #endif //FILTER_HPP
