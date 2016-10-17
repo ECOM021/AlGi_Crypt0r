@@ -17,14 +17,14 @@ Encrypt::Encrypt(string input, string output = "") {
   m_primes = PrimeSet();
   srand (time(NULL));
   choosePair();
-//   std::cout << "4" << std::endl;
-//   totiente();
-//   std::cout << "5" << std::endl;
-//   loadMedia(input);
-//   std::cout << "6" << std::endl;
-//   encrypt();
-//   std::cout << "Keys: " << m_p << "\t" << m_q << "\n";
-//   std::cout << "Exps: " << m_e << "\t" << m_d << "\n"; 
+  std::cout << "4" << std::endl;
+  totiente();
+  std::cout << "5" << std::endl;
+  loadMedia(input);
+  std::cout << "6" << std::endl;
+  encrypt();
+  std::cout << "Keys: " << m_p << "\t" << m_q << "\n";
+  std::cout << "Exps: " << m_e << "\t" << m_d << "\n"; 
 }
 
 void Encrypt::pickOdd() {

@@ -21,10 +21,9 @@ PrimeSet::PrimeSet() {
   primes->erase(0);
   ulong_64 idx = 0;
   for( auto p : *primes )
-    *m_primes[idx++] = p;
+    m_primes->operator[](idx++) = p;
     
   sort( m_primes->begin() , m_primes->end()  );
-  std::cout << "Vector size: " << m_primes->size() << std::endl;
   delete primes;
 }
 ulong_64 PrimeSet::getSize() const {
