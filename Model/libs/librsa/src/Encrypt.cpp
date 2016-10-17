@@ -78,3 +78,7 @@ string Encrypt::getKeyQ() {
 string Encrypt::getKeyD() {
         return to_string(m_d);
 }
+
+string Encrypt::getKeyE() {
+        return to_string(m_e);
+}

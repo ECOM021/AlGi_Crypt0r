@@ -184,7 +184,10 @@ void Window::on_button_encrypt_clicked() {
   m_InfoBar.set_message_type(Gtk::MESSAGE_INFO);
   m_InfoBar.show();
 
-  m_Key_Label.set_text("Keys: ");
+  m_Key_Label.set_text("Keys: \nP: " + enc.getKeyP() +
+                             "\nQ: " + enc.getKeyQ() +
+                             "\nE: " + enc.getKeyE() +
+                             "\nD: " + enc.getKeyD());
   m_KeyBar.set_message_type(Gtk::MESSAGE_INFO);
   m_KeyBar.show();
 }

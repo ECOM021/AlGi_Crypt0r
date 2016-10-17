@@ -13,6 +13,7 @@ public:
         string getKeyP();
         string getKeyQ();
         string getKeyD();
+        string getKeyE();
 private:
         void pickOdd();
         void totiente();
