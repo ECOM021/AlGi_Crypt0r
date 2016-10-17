@@ -45,7 +45,7 @@ void Encrypt::pickOdd() {
 	m_d = m_multply / m_e;
 	while (true)
 	{
-		if (((m_d * m_ek) % m_multply) == 1)
+		if (((m_d * m_e) % m_multply) == 1)
 			break;
 		else 
 			++m_d;
