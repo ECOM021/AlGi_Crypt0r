@@ -66,3 +66,15 @@ void Encrypt::encrypt() {
                 delete []in;
         } while (0);
 }
+
+ulong_64 Encrypt::getKeyP() {
+        return m_p;
+}
+
+ulong_64 Encrypt::getKeyQ() {
+        return m_q;
+}
+
+ulong_64 Encrypt::getKeyD() {
+        return m_d;
+}

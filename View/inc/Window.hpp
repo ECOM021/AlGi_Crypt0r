@@ -26,12 +26,16 @@ protected:
   void on_button_encrypt_clicked();
   void on_button_decrypt_clicked();
   void on_infobar_response(int response);
+  void on_keybar_response(int response);
 
   //Child widgets:
   Gtk::InfoBar m_InfoBar;
   Gtk::Label m_Message_Label;
 
-  Gtk::Box m_VBox_areas, m_VBox_info;
+  Gtk::InfoBar m_KeyBar;
+  Gtk::Label m_Key_Label;
+
+  Gtk::Box m_VBox_areas, m_VBox_info, m_VBox_key;
   Gtk::Box m_HBox_input, m_HBox_output, m_HBox_command;
   
   Gtk::Entry m_input, m_output;

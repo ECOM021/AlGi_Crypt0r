@@ -19,6 +19,7 @@ Window::Window()
 
   add(m_VBox_areas);
   m_VBox_areas.pack_start(m_VBox_info);
+  m_VBox_areas.pack_start(m_VBox_key);
   m_VBox_areas.pack_start(m_HBox_input);
   m_VBox_areas.pack_start(m_HBox_output);
   m_VBox_areas.pack_start(m_HBox_command);
@@ -32,6 +33,16 @@ Window::Window()
   m_VBox_info.pack_start(m_InfoBar, Gtk::PACK_SHRINK);
   m_InfoBar.signal_response().connect(sigc::mem_fun(*this,
               &Window::on_infobar_response) );
+
+  auto keyBarContainer =
+    dynamic_cast<Gtk::Container*>(m_KeyBar.get_content_area());
+  if (keyBarContainer)
+    keyBarContainer->add(m_Key_Label);
+  
+  m_KeyBar.add_button("_OK", 0);
+  m_VBox_info.pack_start(m_KeyBar, Gtk::PACK_SHRINK);
+  m_KeyBar.signal_response().connect(sigc::mem_fun(*this,
+              &Window::on_keybar_response) );
 
   m_HBox_input.pack_start(m_input);
   m_input.set_max_length(128);
@@ -83,13 +94,11 @@ void Window::on_button_folder_clicked()
           Gtk::FILE_CHOOSER_ACTION_SELECT_FOLDER);
   dialog.set_transient_for(*this);
 
-  //Add response buttons the the dialog:
   dialog.add_button("_Cancel", Gtk::RESPONSE_CANCEL);
   dialog.add_button("Select", Gtk::RESPONSE_OK);
 
   int result = dialog.run();
 
-  //Handle the response:
   switch(result)
   {
     case(Gtk::RESPONSE_OK):
@@ -119,11 +128,8 @@ void Window::on_button_file_clicked()
           Gtk::FILE_CHOOSER_ACTION_OPEN);
   dialog.set_transient_for(*this);
 
-  //Add response buttons the the dialog:
   dialog.add_button("_Cancel", Gtk::RESPONSE_CANCEL);
   dialog.add_button("_Open", Gtk::RESPONSE_OK);
-
-  //Add filters, so that only certain file types can be selected:
 
   auto filter_text = Gtk::FileFilter::create();
   filter_text->set_name("Text files");
@@ -142,17 +148,14 @@ void Window::on_button_file_clicked()
   filter_any->add_pattern("*");
   dialog.add_filter(filter_any);
 
-  //Show the dialog and wait for a user response:
   int result = dialog.run();
 
-  //Handle the response:
   switch(result)
   {
     case(Gtk::RESPONSE_OK):
     {
       cout << "Open clicked." << endl;
 
-      //Notice that this is a string, not a Glib::ustring.
       m_file = dialog.get_filename();
       cout << "File selected: " <<  m_file << endl;
       m_input.set_text(m_file);
@@ -174,16 +177,22 @@ void Window::on_button_file_clicked()
 void Window::on_button_encrypt_clicked() {
   cout << "Encrypt: " << m_file << " into folder " << m_folder << endl;
 
-  Encrypt(m_file, m_folder);
+  Encrypt enc(m_file, m_folder);
 
   m_Message_Label.set_text("Encrypt ended");
   m_InfoBar.set_message_type(Gtk::MESSAGE_INFO);
   m_InfoBar.show();
+
+  m_Key_Label.set_text("Keys: ");
+  m_KeyBar.set_message_type(Gtk::MESSAGE_INFO);
+  m_KeyBar.show();
 }
 
 void Window::on_button_decrypt_clicked() {
   cout << "Decrypt: " << m_file << " into folder " << m_folder << endl;
+
   //Adicionar Funções de Descriptografia e Descompressão
+
   m_Message_Label.set_text("Decrypt Ended");
   m_InfoBar.set_message_type(Gtk::MESSAGE_INFO);
   m_InfoBar.show();
@@ -192,4 +201,9 @@ void Window::on_button_decrypt_clicked() {
 void Window::on_infobar_response(int response) {
   m_Message_Label.set_text("");
   m_InfoBar.hide();
+}
+
+void on_keybar_response(int response) {
+  m_Message_Label.set_text("");
+  m_KeyBar.hide();
 }
