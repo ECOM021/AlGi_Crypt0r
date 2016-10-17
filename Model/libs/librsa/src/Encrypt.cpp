@@ -67,14 +67,14 @@ void Encrypt::encrypt() {
         } while (0);
 }
 
-ulong_64 Encrypt::getKeyP() {
-        return m_p;
+string Encrypt::getKeyP() {
+        return to_string(m_p);
 }
 
-ulong_64 Encrypt::getKeyQ() {
-        return m_q;
+string Encrypt::getKeyQ() {
+        return to_string(m_q);
 }
 
-ulong_64 Encrypt::getKeyD() {
-        return m_d;
+string Encrypt::getKeyD() {
+        return to_string(m_d);
 }
